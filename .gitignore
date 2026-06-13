@@ -17,3 +17,6 @@ data/interim/
 
 # Temporary
 *.log
+
+# Local-only private files, never commit
+local_private/
