@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+.pytest_cache/
+*.egg-info/
+
+# IDE / local config
+.vscode/
+.claude/settings.local.json
+.codex
+.DS_Store
+
+# Data: rebuildable intermediate files
+data/interim/
+
+# Temporary
+*.log
