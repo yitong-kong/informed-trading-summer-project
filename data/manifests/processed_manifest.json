@@ -1,0 +1,26 @@
+{
+  "created_utc": "2026-06-21T19:30:39.703074+00:00",
+  "output": "data/processed/trades_event_level.parquet",
+  "rows": 80049,
+  "unique_active_wallets": 23500,
+  "time_range_utc": [
+    "2024-12-31T19:56:48+00:00",
+    "2026-01-03T12:22:21+00:00"
+  ],
+  "rows_per_market": {
+    "Maduro out in 2025?": 47279,
+    "Maduro out by November 30, 2025?": 10116,
+    "Maduro out by January 31, 2026?": 9367,
+    "Maduro out by March 31, 2026?": 8676,
+    "Maduro out by December 31, 2026?": 3190,
+    "Maduro out by February 28, 2026?": 1421
+  },
+  "proposal_mapping": {
+    "t_i": "timestamp",
+    "a_i": "side",
+    "s_i": "gross_shares",
+    "p_i": "gross_price (raw) / yes_price (YES space)",
+    "w_i": "active_wallet"
+  },
+  "script_sha256": "2520ed71f9a39a7c882f03dfb54171c44c41c5a1e418ceadd23e2915b9120c74"
+}

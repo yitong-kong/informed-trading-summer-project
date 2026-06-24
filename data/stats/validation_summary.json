@@ -1,0 +1,16 @@
+{
+  "rows": 80049,
+  "expected_rows": 80049,
+  "unique_active_wallets": 23500,
+  "n_markets": 6,
+  "n_tokens": 12,
+  "rows_per_market": {
+    "Maduro out in 2025?": 47279,
+    "Maduro out by November 30, 2025?": 10116,
+    "Maduro out by January 31, 2026?": 9367,
+    "Maduro out by March 31, 2026?": 8676,
+    "Maduro out by December 31, 2026?": 3190,
+    "Maduro out by February 28, 2026?": 1421
+  },
+  "all_assertions_passed": true
+}

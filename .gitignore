@@ -14,9 +14,11 @@ __pycache__/
 
 # Data: rebuildable intermediate files
 data/interim/
+# Simulated dataset: fully reproducible from script + seed
+data/sim/
 
 # Temporary
 *.log
 
-# Local-only private files, never commit
+# Local-only private files
 local_private/

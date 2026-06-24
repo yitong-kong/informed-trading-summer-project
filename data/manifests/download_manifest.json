@@ -1,0 +1,20 @@
+{
+  "started_utc": "2026-06-10T16:59:13.143188+00:00",
+  "finished_utc": "2026-06-10T17:03:41.878041+00:00",
+  "smoke": false,
+  "event_slug": "maduro-out-in-2025",
+  "goldsky_endpoint": "https://api.goldsky.com/api/public/project_cl6mb8i9h0003e201j6li0diw/subgraphs/orderbook-subgraph/0.0.1/gn",
+  "goldsky_meta_block": 87814766,
+  "goldsky_counts": {
+    "order_filled": 217562,
+    "orders_matched": 80049
+  },
+  "data_api_rows": 20611,
+  "integrity": {
+    "order_filled_rows": 217562,
+    "active_order_rows_taker_eq_exchange": 80049,
+    "unique_makers": 24845,
+    "fee_nonzero_rows": 0
+  },
+  "script_sha256": "ee259e99a30e53f2ff189f5702c5bd445adcc84c4c0074babeba9c115682c768"
+}
