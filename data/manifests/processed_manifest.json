@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-06-21T19:30:39.703074+00:00",
+  "created_utc": "2026-08-24T14:50:50.710847+00:00",
   "output": "data/processed/trades_event_level.parquet",
   "rows": 80049,
   "unique_active_wallets": 23500,
@@ -22,5 +22,5 @@
     "p_i": "gross_price (raw) / yes_price (YES space)",
     "w_i": "active_wallet"
   },
-  "script_sha256": "2520ed71f9a39a7c882f03dfb54171c44c41c5a1e418ceadd23e2915b9120c74"
+  "script_sha256": "396367a3e5bfbedfccd38c4740df1e460a672311f943ac7873eb9bfe96be79af"
 }
