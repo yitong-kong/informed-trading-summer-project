@@ -364,5 +364,3 @@ dependencies:
     - bayesian_changepoint_detection==0.2.dev1
     - crepes==0.9.0
     - informed_order_flow==0.0.1
-
-prefix: "/home/kylian/micromamba/envs/paper"
