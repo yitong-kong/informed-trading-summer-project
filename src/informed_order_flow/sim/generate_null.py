@@ -88,7 +88,7 @@ def generate_null(
     level: str = "0",
     start_ts: int = 1_700_000_000,
     duration_sec: int | None = None,
-    p_long: float = 0.5,
+    p_long_yes: float = 0.5,
 ) -> pd.DataFrame:
     rng = np.random.default_rng(seed)
     rate = params["arrival_rate_per_sec"]
@@ -104,7 +104,7 @@ def generate_null(
     ts = np.sort(ts.astype("int64"))
 
     n = len(ts)
-    is_long = rng.random(n) < p_long
+    is_long = rng.random(n) < p_long_yes
     side, outcome = _sides_outcomes(rng, is_long)
     shares = _sample_shares(rng, params, n)
     yes_price = _walk_prices(rng, params, n)

@@ -52,7 +52,7 @@ python scripts/05_build_simulated_data.py --estimate-only   # only baseline para
 python scripts/05_build_simulated_data.py --no-estimate     # reuse existing params
 
 # A Level 1 null with the empirical direction balance and a fixed seed
-python scripts/05_build_simulated_data.py --level 1 --p-long 0.39 --seed 7
+python scripts/05_build_simulated_data.py --level 1 --p-long-yes 0.39 --seed 7
 
 # A Level 2 block-bootstrap null: 30-min blocks, 60 resampled blocks
 python scripts/05_build_simulated_data.py --level 2 --block-minutes 30 --n-blocks 60
@@ -64,6 +64,17 @@ python scripts/05_build_simulated_data.py --level 1 --h1 --mode additive_trades 
 # An L2 H1 on a No-resolving market via the size_tilt mode
 python scripts/05_build_simulated_data.py --level 2 --no-estimate \
     --h1 --mode size_tilt --resolved-outcome No --size-factor 8
+
+# The full evaluation grid: seeds {2,42,100,1000} x levels {0,1,2} x
+# (null + the 4 injection modes x resolved outcome {Yes, No}) = 12 nulls +
+# 96 H1 = 108 datasets, one injection mode and one outcome each (the No
+# variants carry a `_no` scenario-id suffix). Nulls are not duplicated per
+# outcome: the null flow does not depend on resolved_outcome, so both outcome
+# variants pair against the same null. Within one (level, seed) the null and
+# all H1 scenarios share the same base stream, tau_info and informed wallets
+# (drawn from the seed before the mode branches), so mode and outcome effects
+# are compared paired.
+python scripts/05_build_simulated_data.py --grid
 
 pytest tests/test_sim.py -q                                 # schema/repro/H1 checks
 ```
@@ -86,7 +97,7 @@ pytest tests/test_sim.py -q                                 # schema/repro/H1 ch
 | Option | Default | Meaning / range |
 |---|---|---|
 | `--n-trades INT` | `8000` | exact row count to emit; `> 0` |
-| `--p-long FLOAT` | `0.5` | `P(long-YES)` per trade. `0.5` = symmetric textbook null (zero-mean imbalance); pass the empirical `~0.39` for an empirical-iid null. Range `[0, 1]` |
+| `--p-long-yes FLOAT` | `0.5` | `P(long-YES)` per trade. `0.5` = symmetric textbook null (zero-mean imbalance); pass the empirical `~0.39` for an empirical-iid null. Range `[0, 1]` |
 
 **Level 2 block bootstrap**:
 
@@ -108,10 +119,10 @@ pytest tests/test_sim.py -q                                 # schema/repro/H1 ch
 | `--total-size FLOAT` | `400000` | `additive_trades` | total injected shares; `> 0`. Size it to be visible against the null's volume |
 | `--build-speed {gradual,instant}` | `gradual` | `additive_trades` | `instant` = 1 order, `gradual` = 40 split orders |
 | `--price-impact / --no-price-impact` | on | `additive_trades` | let the winning side appreciate as the insider buys |
-| `--tilt-frac FLOAT` | `0.5` | `direction_tilt_same_count`, `wallet_concentration_only` | fraction of post-tau trades affected. Range `[0, 1]` |
+| `--tilt-frac FLOAT` | `0.5` | `direction_tilt_same_count` | fraction of post-tau *losing-side* trades flipped to the win side and marked informed (already-winning trades are left as null flow, not relabeled). Range `[0, 1]` |
 | `--size-factor FLOAT` | `5.0` | `size_tilt` | multiplier on post-tau winning-side trade sizes; `>= 1` |
 
-Build several datasets by invoking the script once per scenario with distinct `--scenario-id`s; `scripts/06_plot_simulated_data.py` then renders every built scenario it discovers under `data/sim/`.
+Build several datasets by invoking the script once per scenario with distinct `--scenario-id`s. `scripts/06_plot_simulated_data.py` then renders figures from the scenarios under `data/sim/` (detector-matched K=100 event-time features): `imbalance_signature_s<seed>[_no].png` (one figure per seed and resolved outcome: null + four modes, bucket imbalance vs bucket number with pre/post mean steps at `tau_info`) and `wallet_concentration.png` (per-level wallet HHI around `tau_info` for one seed, null vs the four modes). The exogenous random-walk price is deliberately not plotted — it is not a detector input.
 
 Programmatic — a custom scenario:
 
@@ -147,7 +158,7 @@ meta   = pd.read_parquet("data/sim/L2_h1_split/sim_market_metadata.parquet")
 
 ## Reproducibility
 
-- Null direction is symmetric `Bernoulli(0.5)` by default (zero-mean imbalance); pass `p_long` in the config for an empirical-iid null.
+- Null direction is symmetric `Bernoulli(0.5)` by default (zero-mean imbalance); pass `p_long_yes` in the config for an empirical-iid null.
 - IDs use real on-chain formats: `transaction_hash` / `condition_id` = `0x` + 64 hex, wallet = `0x` + 40 hex, `token_id` = decimal string. 
 
 ## Module layout

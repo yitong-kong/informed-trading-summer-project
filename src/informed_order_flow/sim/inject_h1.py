@@ -13,7 +13,7 @@ The four injection modes are kept separately switchable so an evaluation can
 tell which dimension the detector reacts to:
 
 - ``additive_trades``            : add new winning-side trades after tau
-- ``direction_tilt_same_count``  : flip a fraction of post-tau trades to the win side
+- ``direction_tilt_same_count``  : flip a fraction of post-tau *losing-side* trades to the win side
 - ``size_tilt``                  : scale up winning-direction trade sizes
 - ``wallet_concentration_only``  : route post-tau flow to a few informed wallets
 
@@ -130,9 +130,24 @@ def _additive(core, market, rng, tau, total_size, build_speed, informed,
 
 
 def _direction_tilt(core, rng, post, tilt_frac, informed, win, win_token):
-    """Flip a fraction of post-tau trades to the win side (same count, same sizes)."""
+    """Flip a fraction of post-tau *losing-side* trades to the win side.
+
+    Candidates are only post-tau trades currently on the losing side
+    (direction != ``resolved_outcome``). A trade already on the winning side
+    would gain nothing from a flip -- it changes neither the direction nor the
+    imbalance -- yet relabeling it would brand a chance-correct null trade as
+    informed and inflate the insider footprint. So we flip and attribute to
+    informed wallets only genuine direction changes. Same total count and
+    per-trade sizes; only direction and attribution of the flipped trades move.
+    """
     out = core.copy()
-    idx = np.where(post)[0]
+    is_yes = (out["outcome"] == "Yes").to_numpy()
+    is_buy = (out["side"] == "BUY").to_numpy()
+    if win == "Yes":  # long-YES = BUY Yes or SELL No
+        is_win = (is_buy & is_yes) | (~is_buy & ~is_yes)
+    else:             # long-NO  = BUY No  or SELL Yes
+        is_win = (is_buy & ~is_yes) | (~is_buy & is_yes)
+    idx = np.where(post & ~is_win)[0]  # post-tau trades on the losing side only
     flip = rng.choice(idx, size=int(len(idx) * tilt_frac), replace=False)
     wp = _win_price(out, win)
     out.loc[flip, "side"] = "BUY"

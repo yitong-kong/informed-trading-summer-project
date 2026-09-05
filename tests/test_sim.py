@@ -62,7 +62,7 @@ def test_textbook_null_is_symmetric(baseline):
     core = generate_null(params, counts, market, n_trades=20000, seed=11, level="0")
     trades = to_sim_trades_event_level(core, meta)
     long_frac = (trades["signed_yes_size"] > 0).mean()
-    assert abs(long_frac - 0.5) < 0.02  # symmetric, unlike empirical p_long ~ 0.39
+    assert abs(long_frac - 0.5) < 0.02  # symmetric, unlike empirical p_long_yes ~ 0.39
 
 
 def test_real_format_ids(baseline):
@@ -113,3 +113,38 @@ def test_h1_additive_injects_exact_long_flow(baseline):
     # The only post-tau difference is the injected long-YES episode.
     assert inj_post - null_post == pytest.approx(total, rel=1e-9)
     assert set(informed).issubset(set(inj_t["active_wallet"]))
+
+
+def test_h1_direction_tilt_only_flips_losing_side(baseline):
+    """direction_tilt must flip/label only post-tau *losing-side* trades.
+
+    A trade that already guessed right (on the winning side in the null) must
+    never be relabeled as informed -- flipping it would change nothing yet
+    inflate the insider footprint.
+    """
+    params, counts = baseline
+    meta, market, _ = _market()
+    from informed_order_flow.sim.schema import to_sim_trades_event_level
+    from informed_order_flow.sim.inject_h1 import inject_h1
+    tilt = 0.6
+    core = generate_null(params, counts, market, n_trades=4000, seed=5, level="0")
+    inj, tau, informed = inject_h1(
+        core, market, seed=5, mode="direction_tilt_same_count",
+        tau_frac=0.5, tilt_frac=tilt, n_wallets=3,
+    )
+    informed = set(informed)
+    # market resolves Yes -> winning side = long-YES = signed_yes_size > 0
+    null_t = to_sim_trades_event_level(core, meta).set_index("transaction_hash")
+    inj_t = to_sim_trades_event_level(inj, meta)
+    null_long = null_t["signed_yes_size"] > 0
+    post = null_t["timestamp"] > tau
+    n_losing_post = int((post & ~null_long).sum())
+
+    insider = inj_t[inj_t["active_wallet"].isin(informed)]
+    # exactly tilt_frac of the post-tau losing trades were flipped + labeled
+    assert len(insider) == int(n_losing_post * tilt)
+    # every labeled trade is post-tau and now sits on the win side
+    assert (insider["timestamp"] > tau).all()
+    assert (insider["signed_yes_size"] > 0).all()
+    # and each was a losing trade in the null -- no chance-correct trade relabeled
+    assert (~null_long.loc[insider["transaction_hash"]]).all()

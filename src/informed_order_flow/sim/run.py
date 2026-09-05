@@ -55,7 +55,7 @@ def build_scenario(config: dict, out_dir: Path = SIM_DIR) -> dict:
         params, counts = load_baseline(out_dir)
         core = generate_null(
             params, counts, market, int(config["n_trades"]), seed, level=level,
-            p_long=config.get("p_long", 0.5),
+            p_long_yes=config.get("p_long_yes", 0.5),
         )
         source = {
             "kind": "baseline_params",
@@ -65,7 +65,7 @@ def build_scenario(config: dict, out_dir: Path = SIM_DIR) -> dict:
             "control_questions": params["control_questions"],
             "fit_window_utc": params["fit_window_utc"],
             "holdout_window_utc": params.get("holdout_window_utc"),
-            "p_long": config.get("p_long", 0.5),
+            "p_long_yes": config.get("p_long_yes", 0.5),
         }
     elif level == "2":
         bs = config["bootstrap"]

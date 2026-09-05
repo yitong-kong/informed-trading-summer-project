@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """Entry point: visualise the simulated dataset built under data/sim/.
 
-Reads each scenario's produced trades_event_level.parquet + sim_manifest.json. 
-Writes three figures to results/figures/simulated_data/:
-    price_history, order_flow_imbalance, wallet_concentration.
+Reads each scenario's produced trades_event_level.parquet + sim_manifest.json.
+Writes to results/figures/simulated_data/:
+    imbalance_signature_s<seed>[_no] (one figure per seed and resolved
+    outcome) and wallet_concentration.
 
 Run scripts/05_build_simulated_data.py first.
 

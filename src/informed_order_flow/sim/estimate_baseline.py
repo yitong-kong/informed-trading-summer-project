@@ -71,7 +71,7 @@ def estimate_baseline(
             if len(holdout) else None
         ),
         "arrival_rate_per_sec": float((len(ts) - 1) / max(ts[-1] - ts[0], 1)),
-        "p_long": float(np.mean(signed > 0)),
+        "p_long_yes": float(np.mean(signed > 0)),
         "log_shares_mu": float(log_shares.mean()),
         "log_shares_sigma": float(log_shares.std(ddof=1)),
         "shares_max": float(shares.max()),  # clip synthetic tail to observed support

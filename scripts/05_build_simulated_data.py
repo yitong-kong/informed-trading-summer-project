@@ -1,12 +1,28 @@
 # -*- coding: utf-8 -*-
-"""Entry point: estimate baseline params and build ONE simulated dataset.
+"""Entry point: estimate baseline params and build simulated dataset(s).
 
 Pipeline: estimate_baseline -> generate_null (level 0/1/2) ->
 optional inject_h1 -> a single scenario's parquet + sim_market_metadata +
 sim_manifest, written under data/sim/<scenario_id>/.
 
-Each invocation builds exactly one dataset. See the table in src/informed_order_flow/sim/README.md for every option's
-meaning, default and range.
+Each invocation builds exactly one dataset, except ``--grid`` which builds the
+full evaluation grid through the very same ``build_scenario`` path:
+
+    seeds {2, 42, 100, 1000} x levels {0, 1, 2}
+        x (null + the four injection modes x resolved outcome {Yes, No})
+        =  12 nulls + 96 H1 datasets
+
+Each H1 dataset carries exactly one injection mode and one resolved outcome
+(the side the insider bets; ``No`` makes imbalance drift down after tau). The
+No variants get a ``_no`` scenario-id suffix. Nulls are not duplicated per
+outcome: the null stream does not depend on ``resolved_outcome`` (it only
+enters the market metadata and the injection side), so both outcome variants
+pair against the same null. Within one (level, seed) the null and all H1
+scenarios share the same base stream, the same random ``tau_info`` and the
+same informed wallets (both are drawn from the scenario seed before the mode
+branches), so mode and outcome effects are compared paired. See the
+table in src/informed_order_flow/sim/README.md for every option's meaning,
+default and range.
 
 Usage (example):
     # Estimate baseline params + build the default dataset (Level 0 symmetric null)
@@ -16,7 +32,7 @@ Usage (example):
     python scripts/05_build_simulated_data.py --no-estimate     # reuse existing params
 
     # A Level 1 null with the empirical direction balance and a fixed seed
-    python scripts/05_build_simulated_data.py --level 1 --p-long 0.39 --seed 7
+    python scripts/05_build_simulated_data.py --level 1 --p-long-yes 0.39 --seed 7
 
     # A Level 2 block-bootstrap null: 30-min blocks, 60 resampled blocks
     python scripts/05_build_simulated_data.py --level 2 --block-minutes 30 --n-blocks 60
@@ -24,6 +40,9 @@ Usage (example):
     # A Level 1 H1 dataset: a gradual informed episode at a random tau_info
     python scripts/05_build_simulated_data.py --level 1 --h1 --mode additive_trades \
         --total-size 400000 --n-wallets 3
+
+    # The full 4-seed x 3-level x (null + 4 modes x Yes/No) evaluation grid
+    python scripts/05_build_simulated_data.py --grid
 """
 import argparse
 import json
@@ -33,6 +52,8 @@ from informed_order_flow.sim.run import H0_LEVELS, INJECTION_MODES
 
 DEFAULT_CONTROL_QUESTION = "Maduro out by November 30, 2025?"
 BUILD_SPEEDS = ("gradual", "instant")
+GRID_SEEDS = (2, 42, 100, 1000)
+GRID_OUTCOMES = ("Yes", "No")
 
 
 def _market(resolved_outcome: str) -> dict:
@@ -65,6 +86,60 @@ def _scenario_id(args: argparse.Namespace) -> str:
     return f"L{args.level}_h1_{args.mode}" if args.h1 else f"L{args.level}_null"
 
 
+def _grid_config(level: str, seed: int, mode: str | None, outcome: str,
+                 args: argparse.Namespace) -> dict:
+    """One grid scenario config: the null base (per level/seed) +- one injection.
+
+    Injection knobs are the CLI defaults, identical across the grid, so the
+    only varying factors are (seed, level, mode, resolved outcome) --
+    everything else is controlled.
+    """
+    if mode is None:
+        sid = f"L{level}_null_s{seed}"
+    else:
+        sid = f"L{level}_{mode}_s{seed}" + ("_no" if outcome == "No" else "")
+    config = {
+        "scenario_id": sid,
+        "level": level,
+        "seed": seed,
+        "market": _market(outcome),
+        "injection": dict(_injection(args), mode=mode) if mode else None,
+    }
+    if level in ("0", "1"):
+        config["n_trades"] = args.n_trades
+        config["p_long_yes"] = args.p_long_yes
+    else:
+        config["bootstrap"] = {
+            "control_question": args.control_question,
+            "block_minutes": args.block_minutes,
+            "n_blocks": args.n_blocks,
+        }
+    return config
+
+
+def _build_grid(args: argparse.Namespace) -> None:
+    """Build the full evaluation grid: 12 nulls + 96 single-mode H1 datasets.
+
+    Nulls are outcome-free (one per level/seed); every injection mode is built
+    once per resolved outcome (Yes and No), sharing the paired null's stream.
+    """
+    specs = [(level, seed, None, "Yes")
+             for level in H0_LEVELS for seed in GRID_SEEDS]
+    specs += [(level, seed, mode, outcome)
+              for level in H0_LEVELS
+              for seed in GRID_SEEDS
+              for mode in INJECTION_MODES
+              for outcome in GRID_OUTCOMES]
+    print(f"[grid] building {len(specs)} scenarios "
+          f"(seeds={GRID_SEEDS}, levels={H0_LEVELS}, "
+          f"modes=null+{len(INJECTION_MODES)}, outcomes={GRID_OUTCOMES})")
+    for i, (level, seed, mode, outcome) in enumerate(specs, 1):
+        m = build_scenario(_grid_config(level, seed, mode, outcome, args))
+        tau = m["tau_info_utc"]
+        print(f"    [{i:3d}/{len(specs)}] {m['scenario_id']:46s} rows={m['n_rows']:<6d}"
+              + (f" tau={tau}" if tau else ""))
+
+
 def _baseline_summary(params: dict) -> str:
     return json.dumps({"baseline": {
         "fit_rows": params["fit_rows"],
@@ -80,6 +155,11 @@ def _build_parser() -> argparse.ArgumentParser:
     )
 
     g = ap.add_argument_group("general (all scenarios)")
+    g.add_argument("--grid", action="store_true",
+                   help="build the full evaluation grid (seeds 2/42/100/1000 x "
+                        "levels 0/1/2 x null + 4 injection modes x resolved "
+                        "outcome Yes/No = 108 datasets) with the default knobs; "
+                        "per-scenario options are ignored")
     g.add_argument("--estimate-only", action="store_true",
                    help="only (re)estimate baseline params, then exit")
     g.add_argument("--no-estimate", action="store_true",
@@ -96,7 +176,7 @@ def _build_parser() -> argparse.ArgumentParser:
     n = ap.add_argument_group("Level 0/1 null (ignored for --level 2)")
     n.add_argument("--n-trades", type=int, default=8000,
                    help="exact row count to emit (default: %(default)s)")
-    n.add_argument("--p-long", type=float, default=0.5,
+    n.add_argument("--p-long-yes", type=float, default=0.5,
                    help="P(long-YES) per trade; 0.5 = symmetric textbook null, "
                         "pass the empirical ~0.39 for an empirical-iid null "
                         "[0..1] (default: %(default)s)")
@@ -135,9 +215,10 @@ def _build_parser() -> argparse.ArgumentParser:
                    help="additive_trades only: let the winning side appreciate as "
                         "the insider buys (default: %(default)s)")
     h.add_argument("--tilt-frac", type=float, default=0.5,
-                   help="direction_tilt_same_count / wallet_concentration_only: "
-                        "fraction of post-tau trades affected (0..1) "
-                        "(default: %(default)s)")
+                   help="direction_tilt_same_count: fraction of post-tau "
+                        "losing-side trades flipped to the win side and marked "
+                        "informed (already-winning trades are not relabeled) "
+                        "(0..1) (default: %(default)s)")
     h.add_argument("--size-factor", type=float, default=5.0,
                    help="size_tilt only: multiplier on post-tau winning-side trade "
                         "sizes (>=1) (default: %(default)s)")
@@ -145,8 +226,8 @@ def _build_parser() -> argparse.ArgumentParser:
 
 
 def _validate(ap: argparse.ArgumentParser, args: argparse.Namespace) -> None:
-    if not 0.0 <= args.p_long <= 1.0:
-        ap.error("--p-long must be in [0, 1]")
+    if not 0.0 <= args.p_long_yes <= 1.0:
+        ap.error("--p-long-yes must be in [0, 1]")
     if args.n_trades <= 0:
         ap.error("--n-trades must be positive")
     if args.block_minutes <= 0:
@@ -176,8 +257,12 @@ def main() -> None:
 
     # Level 0/1 read the parametric baseline; Level 2 bootstraps the real table
     # directly and needs no baseline estimation.
-    if not args.no_estimate and args.level in ("0", "1"):
+    if not args.no_estimate and (args.grid or args.level in ("0", "1")):
         print(_baseline_summary(estimate_baseline()))
+
+    if args.grid:
+        _build_grid(args)
+        return
 
     config = {
         "scenario_id": _scenario_id(args),
@@ -188,7 +273,7 @@ def main() -> None:
     }
     if args.level in ("0", "1"):
         config["n_trades"] = args.n_trades
-        config["p_long"] = args.p_long
+        config["p_long_yes"] = args.p_long_yes
     else:
         config["bootstrap"] = {
             "control_question": args.control_question,
