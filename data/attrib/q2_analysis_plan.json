@@ -1,0 +1,172 @@
+{
+  "plan_version": "q2-analysis-plan-2.0.0",
+  "frozen_on": "2026-08-23",
+  "frozen_at_step": 0,
+  "rng_invariance_assertion": "family_unit and statistics do not enter cell_seed; cell_seed remains a function only of seed_base, window_id and cell_id",
+  "question": "within a frozen Q1 alarm window, which active wallets contribute more alarm-direction signed volume than wallet labels alone can explain",
+  "prior_spec_available": false,
+  "prior_spec_note": "The earlier v4 / v5 specification files are no longer in the working tree and no hashes are reconstructed for them. The baseline materials that do still exist are hashed below.",
+  "development_contact_disclosure": "An early read-only prototype used B = 199,999 and temporary seeds to inspect anonymised aggregate rejection counts. No address or ranking was disclosed to the design owner and no contemporaneous config file exists to hash. This contact must be stated in the methods section of the paper.",
+  "estimand": {
+    "name": "alarm-direction rank position (magnitude leg) and alarm-direction trade count (direction leg)",
+    "statement": "Two pre-registered estimands are tested side by side inside the MLE window. The magnitude leg is a wallet's summed van der Waerden score of d * q_i ranked within its bucket: where its trades sit in the bucket's order, with bounded influence, so a single block trade cannot set the width of the null. The direction leg is its count of with-the-alarm trades minus against-the-alarm trades, which carries no size at all. They answer different questions and are expected to select different wallets.",
+    "not_claimed": "Neither leg claims to separate direction from size in a single number; that is why there are two of them and why the paper reports them apart.",
+    "alpha_allocation": "alpha / 2 to each leg, Bonferroni over the two, fixed before any p-value of either leg was seen; the headline set is the union of the two rejections and never the better-looking one",
+    "dnc_role": "DNC -- the alarm-direction signed size contribution, DNC_i = C_b * q_i within a bucket -- is retained as the effect size, the attribution ledger and a sensitivity. It is no longer a headline statistic: its permutation null is too wide on real order flow, where the variance is set by the heavy tail of |q| inside a cell.",
+    "amendment_status": "The two headline legs are a prospective revision of the analysis plan, recorded in amendments below and made before any address-level run under them; they are not an original pre-registration. The superseded revision, which made DNC the headline, is likewise recorded and its results remain reproducible as the sensitivity.",
+    "dfa_role": "DFA = DNC + AGC is an exactly conserved ledger summing to W_alarm, reported as a sensitivity. Because the AGC part can be spread by any weights summing to one without breaking conservation, wallet DFA rankings are not a second headline.",
+    "concentration_note": "A single trade dominating a cell does not manufacture a false positive: the permutation gives that wallet an equally high value in the random worlds. Concentration costs power, and the orbit audit reports that honestly."
+  },
+  "confirmatory_population": {
+    "rule": "n_trades_mle >= 3",
+    "outside_reason_code": "fewer_than_3_mle_slots",
+    "real_family_size": 427,
+    "timing": "fixed after inspecting membership structure and before any address-level p-value; recorded as a prospective analysis-plan amendment",
+    "scope_change": "formal findings apply only to repeatedly active wallets; the research object changes with the rule",
+    "justification": "the resolution ceiling, not alpha, is the binding constraint: at the 4,238-pair first Holm threshold only 323 pairs could ever reach it, whereas 374 of the 427 confirmatory pairs reach the narrowed threshold. The 374 was measured under the superseded merged family; the count under one study per window at alpha / 2 per leg is recomputed by the orbit step and recorded there, and the argument is directional rather than dependent on the exact figure",
+    "validity_argument": "conditional on the frozen windows, cells and per-wallet per-cell multiplicities: (1) eligibility is identical across the whole orbit, (2) each true-null randomisation p-value is still super-uniform, (3) Holm controls FWER over the confirmatory items of a study under arbitrary dependence, (4) no formal rejection is ever produced outside the subfamily, so study-wise FWER stays at or below 0.05, split as alpha / 2 over the two headline legs",
+    "prohibited_wording": [
+      "the remaining 3,811 pairs are mathematically untestable",
+      "the remaining 3,811 pairs show no anomaly",
+      "an empty result confirms that no wallet traded on private information"
+    ],
+    "empty_result_wording": "Among the 427 repeatedly active wallet-window pairs, no confirmed anomaly passed the 5% FWER threshold. The other 3,811 pairs lie outside the confirmatory estimand and no claim is made about them."
+  },
+  "result_tiers": {
+    "confirmed_repeat_active": "rejected by either headline leg's Holm within the confirmatory family of its window, each leg at alpha / 2",
+    "bh_review_screen": "selected by a leg's BH screen over all pairs; not a formal finding",
+    "top10_descriptive": "per-window top 10 on either headline leg; descriptive only"
+  },
+  "inherited_limitations": [
+    "active_wallet is a proxy for the owner of the aggressive order, not a natural person: one actor may hold several addresses and a wallet purely providing passive liquidity is structurally invisible rather than merely low-scoring",
+    "the frozen in-2025 alarm exceeds its threshold by only 0.688% (28.695404 / 28.499264 = 1.00688) yet supplies 2,209 / 4,238 = 52.1% of screened pairs and 235 / 427 = 55.0% of the confirmatory family",
+    "Q2 is wallet attribution conditional on a label-invariant audit window; it neither confirms nor rescues the Q1 change-point significance",
+    "the '1 alarm in 5 seeds' figure and the maxT coefficients in the Q1 critique belong to a reverted raw-path bootstrap version and are not a robustness recomputation of the frozen detector"
+  ],
+  "adjudicated": [
+    {
+      "issue": "restrict the formal family to MLE slots >= 3",
+      "ruling": "accepted; the formal question narrows to repeatedly active wallets"
+    },
+    {
+      "issue": "claim that 3,915 pairs can never be rejected",
+      "ruling": "rejected; 1 / orbit size is the most optimistic bound on the exact orbit p-value, not a hard floor on a finite Monte Carlo p-value"
+    },
+    {
+      "issue": "reduce B to 199,999",
+      "ruling": "rejected; B stays at 1,999,999, compute is not the bottleneck"
+    },
+    {
+      "issue": "promote size-binned DNC to a co-primary analysis",
+      "ruling": "rejected; DNC still carries size variation inside a size bin and a second primary analysis would add cross-analysis multiplicity"
+    },
+    {
+      "issue": "direction-count sensitivity",
+      "ruling": "dropped in this version to protect the schedule; the cost is carried by the estimand declaration"
+    },
+    {
+      "issue": "audit seed / two-seed intersection",
+      "ruling": "dropped; replaced by a single seed plus conditional review via mc_sigma_to_threshold"
+    },
+    {
+      "issue": "K=50 sensitivity",
+      "ruling": "dropped; the omission must be stated in the paper"
+    },
+    {
+      "issue": "wallet_candidates.parquet",
+      "ruling": "dropped; top-N lists are generated from the tests table when writing"
+    },
+    {
+      "issue": "full provenance system",
+      "ruling": "downgraded to freeze_build_id plus q2_hashes.json"
+    },
+    {
+      "issue": "whether an episode includes the method",
+      "ruling": "it does not; an episode is (stream, channel, K) with one complete representative run"
+    },
+    {
+      "issue": "generate sim_truth.parquet",
+      "ruling": "not generated; the evaluator reads the 108 manifests directly, so no file under data/attrib/ contains ground truth"
+    },
+    {
+      "issue": "modify the pipeline to avoid the condition-id substring coincidence",
+      "ruling": "no modification; assertion A proves behaviourally that no rule reads address text"
+    },
+    {
+      "issue": "role of the simulated grid",
+      "ruling": "simulation is validation and a fallback, the real Maduro contracts are the research target; no repositioning of simulation as primary evidence"
+    }
+  ],
+  "known_arithmetic_correction": "With B = 199,999 and M = 4,238 the first Holm threshold admits floor(200000 * 0.05 / 4238) = 2 Monte Carlo grid points, not 4; M = 427 gives 23.",
+  "amendments": [
+    {
+      "date": "2026-08-23",
+      "step": 4,
+      "change": "the resolution diagnostics in expected_counts are restated under one study per window at alpha / 2 per leg: real orbit-reachable confirmatory 374 -> 381, screening 323 -> 339, max Holm step 325 -> 192; simulated confirmatory 4,276 -> 4,207 and its legacy_float 4,275 -> 4,206",
+      "reason": "these counts are a function of the family boundary and the alpha a pair is measured against, both of which the same-day step-0 amendment changed. Nothing about the orbits themselves moved: orbit sizes, cells and cell seeds are bit-identical, and the counts are recomputed from the persisted exact log floors against the new thresholds. The one simulated boundary tie recorded on 2026-08-18 survives the change, so the exact-integer treatment it argued for still separates the exact count from the legacy floating one.",
+      "effect": "diagnostics only; no rule, family, seed, threshold or p-value is defined by them. They are the regression gate 8 measures a rerun against, so they are stated here rather than written into the engine, where a track-specific literal would both break the single-fork-point rule and make the count unfalsifiable"
+    },
+    {
+      "date": "2026-08-23",
+      "step": 0,
+      "change": "the headline statistic becomes two pre-registered orthogonal legs -- magnitude (bucket van der Waerden score) and direction (bucket sign count) -- each judged at alpha / 2; a study becomes one window rather than one stream; and DNC is demoted from headline to effect size, ledger and sensitivity",
+      "reason": "DNC's permutation null is too wide on real order flow: its variance is set by the heavy tail of |q| inside a cell, so a wallet that merely holds one block trade looks extreme while a wallet that tilts many ordinary trades does not. The simulated grid shows the failure directly -- injected wallets rank at the top by DNC yet carry p-values around 0.28 (direction tilt) and 0.066 (size tilt) -- so the ordering carries the information and the null width destroys it. Merging a stream's windows into one family also judged the real track far more strictly than the simulated track on which recall was calibrated, and pushed the smallest achievable p of some pairs below their own orbit floor, making them unrejectable in principle.",
+      "effect": "the test statistics and the family boundary change; the permutation engine does not. Cells, cell seeds, the orbit sizes, B, the seed base, the Philox addressing and every step 0-1 freeze table are untouched, and the DNC p-values are recomputed from the same draws as a bit-identical regression. Both legs were fixed, with their alpha split, before any p-value of either was seen on the real track; taking the better-looking leg after the fact is prohibited.",
+      "supersedes": "the revision that made DNC the headline statistic; that analysis remains reproducible and is reported as the DNC sensitivity"
+    },
+    {
+      "date": "2026-08-18",
+      "step": 4,
+      "change": "the simulated orbit-reachable confirmatory count is 4,276 of 4,319, superseding 4,275",
+      "reason": "study L2_size_tilt_s1000_no holds a pair with orbit size 1560 in a family of 78, so 1 / 1560 = alpha / 78 exactly. Holm rejects at p <= threshold, so the pair is reachable. The superseded value came from a floating log-gamma orbit size, which places the tie a few ulps outside the threshold; this version computes orbit sizes as exact integers and compares against alpha as the exact decimal 1/20.",
+      "effect": "a resolution diagnostic only. No rule, family, seed, threshold or p-value changes, and the real track is untouched because it has no boundary tie. Both numbers stay in the configuration and the gate checks the identity exact - ties == legacy, so the superseded count remains reproducible."
+    },
+    {
+      "date": "2026-08-18",
+      "step": 4,
+      "change": "the orbit floor is published as p_orbit_floor_log10 alongside p_orbit_floor",
+      "reason": "1 / orbit_size is positive for every orbit, but the largest orbits run past 10^400 and the double rendering of their floor saturates at zero -- nine simulated pairs, the smallest true floor near 1e-447. A stored zero asserts that the p-value can be arbitrarily small, which is the opposite of what the field means.",
+      "effect": "a reporting field only. No count, threshold or decision changes; every comparison was already made in exact or logarithmic form, and the checks now assert that a zero in p_orbit_floor can only be the float rendering giving up."
+    }
+  ],
+  "specification_documents": [
+    {
+      "label": "q2_design_spec",
+      "bytes": 55707,
+      "sha256": "9089cc23f4326045ba4cafa94987ef0a6d9be3f813b607f53e0b1090050ac0c1"
+    },
+    {
+      "label": "q2_minimal_revision_spec",
+      "bytes": 71155,
+      "sha256": "7810d8b446b159689e518f74a1fececb431cde65293e5cf7e45e28f927e970a8"
+    },
+    {
+      "label": "q2_minimal_demo_readme",
+      "bytes": 12456,
+      "sha256": "d49fe1218628b39e8da99fdbe95c4fe2db129028c45b1579ed367fab5458b174"
+    },
+    {
+      "label": "q1_critique",
+      "bytes": 65510,
+      "sha256": "40722312a333a714a5798747ac2180d66505539ce8e079bfefb6061af70789be"
+    }
+  ],
+  "id_scheme_regression": {
+    "id_scheme_sha256": "3df11694888bd27a57984d78f78ac3c816b45d46bc5f8cd34b5cb29c645358c3",
+    "evidence": "every cell seed of every frozen cell table recomputed from the live id scheme and the seed base; the digest above names the subtree that was exercised, it is not itself the check",
+    "frozen_cell_seeds": {
+      "real": {
+        "status": "reproduced",
+        "cells": 222
+      },
+      "sim": {
+        "status": "reproduced",
+        "cells": 2621
+      }
+    }
+  },
+  "q2_config": {
+    "config_version": "q2-config-2.0.0",
+    "sha256": "bf75b2f596f24fc632ad8f18d0d3111ee7990a851208ed04ddcb77fedb81c2e5"
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "track": "sim",
+  "freeze_build_id": "b8fec2cc93371ff0",
+  "provenance": {
+    "analysis_plan_sha256": "96a4a55ee5ae54894b4b3634ee7a74455323becd1b390e0be8e436761127c73c",
+    "q2_config_sha256": "bf75b2f596f24fc632ad8f18d0d3111ee7990a851208ed04ddcb77fedb81c2e5",
+    "engine_sha256": "94adb0a8d749f680c462d209d6955ff131e9474dae514f4d8bfa42e3fbb5223d"
+  },
+  "counts": {
+    "canonical_runs": 61,
+    "distinct_episodes": 53,
+    "studies": 61,
+    "mle_slots": 87900,
+    "pairs": 44723,
+    "distinct_wallets": 19038,
+    "confirmatory_family": 4319,
+    "profiles": {
+      "NEW": 16742,
+      "OLD_SMALL": 14035,
+      "OLD_LARGE": 13946
+    },
+    "cells": 2621
+  },
+  "conservation": {
+    "per_trade_dfa": 0.0,
+    "per_bucket_llr": 1.3322676295501878e-15,
+    "per_run_w_alarm": 7.105427357601002e-15
+  },
+  "resolution": {
+    "orbit_reachable_confirmatory_family": 4207,
+    "orbit_reachable_screening_family": 2758,
+    "orbit_boundary_ties": 1,
+    "p_orbit_floor_log10_min": -446.71919038778543,
+    "low_power_windows": 0,
+    "pairs_with_no_movable_slots": 0
+  },
+  "permutation": {
+    "draws": 1999999,
+    "seed_base": 2026081601,
+    "min_p_raw": {
+      "mag": 5e-07,
+      "dir": 5e-07,
+      "dnc": 5e-07,
+      "dfa": 5e-07
+    },
+    "pairs_at_the_grid_floor": {
+      "mag": 62,
+      "dir": 88,
+      "dnc": 18,
+      "dfa": 19
+    },
+    "review_trigger_sigma": 3.0,
+    "second_seed_review": {
+      "windows": 4,
+      "pairs": 5,
+      "unstable_leg_decisions": 0,
+      "unstable_headline_decisions": 0
+    }
+  },
+  "multiplicity": {
+    "alpha": 0.05,
+    "alpha_leg": 0.025,
+    "family_unit": "window",
+    "headline_rejections": 143,
+    "headline_by_leg": {
+      "mag": 65,
+      "dir": 37,
+      "both": 91,
+      "none": 44530
+    },
+    "leg": {
+      "mag": {
+        "rejections": 156,
+        "families_with_a_rejection": 53,
+        "min_p_holm": 4.9999999999999996e-06
+      },
+      "dir": {
+        "rejections": 128,
+        "families_with_a_rejection": 44,
+        "min_p_holm": 2e-06
+      },
+      "dnc": {
+        "rejections": 83,
+        "families_with_a_rejection": 33,
+        "min_p_holm": 1.2e-05
+      },
+      "dfa": {
+        "rejections": 86,
+        "families_with_a_rejection": 34,
+        "min_p_holm": 1.2e-05
+      }
+    },
+    "bh_screened": {
+      "mag": 150,
+      "dir": 126
+    },
+    "sensitivity_cannot_promote": {
+      "dnc": {
+        "rejections": 83,
+        "sensitivity_only": 18,
+        "both": 65,
+        "headline_only": 128,
+        "neither": 44512
+      },
+      "dfa": {
+        "rejections": 86,
+        "sensitivity_only": 18,
+        "both": 68,
+        "headline_only": 125,
+        "neither": 44512
+      }
+    },
+    "leg_agreement": {
+      "pairs": 4319,
+      "both": 91,
+      "mag_only": 65,
+      "dir_only": 37,
+      "union": 193
+    }
+  },
+  "empirical_threshold": {
+    "t_star": 5e-07,
+    "leg": "mag",
+    "passed": 62,
+    "held_back_into_review_queue": 50
+  },
+  "status_counts": {
+    "confirmed_repeat_active": 143,
+    "review_queue": 50,
+    "bh_review_screen": 7,
+    "top10_descriptive": 1236,
+    "not_flagged": 43287
+  },
+  "lead_time_minutes": {
+    "median": 2998.883333333333,
+    "p90": 11700.143333333337,
+    "max": 19841.816666666666,
+    "median_confirmed": 4286.55
+  },
+  "result_tiers": {
+    "confirmed_repeat_active": "the only tests that produce a headline status; selecting the better-looking leg after the fact is forbidden",
+    "review_queue": "not a finding and not discarded. The magnitude leg's permutation null does not hold on real order flow, so its nominal Holm rejection alone is a candidate for review; the direction leg needs no such tier because its measured error matches its nominal level",
+    "bh_review_screen": "wallets share slots, so independence / PRDS is unproven; this is a review screen and carries no FDR claim",
+    "top10_descriptive": "the cut is taken on the score, not the rank: every wallet sharing the 10th largest value comes in, so the tier can hold more than 10. Splitting an exact tie on arrival order would read as a difference in evidence where the statistic shows none",
+    "tie_members": 618
+  },
+  "scope": {
+    "fwer_claim": "the 5% study-wise FWER applies to the confirmed_repeat_active decision of one window, split as alpha / 2 over the two headline legs; error across studies is not controlled by Holm and must be stated separately",
+    "attribution": "active order owner only; the passive leg of every fill is structurally invisible to this design",
+    "supported_claim": "conditionally unusual inside a frozen alarm window, and worth review",
+    "unsupported_claim": "insider, illegal, or a probability of being informed"
+  },
+  "outputs": {
+    "wallet_window_tests.parquet": "90fc5cfaae940eea92404957ceae0cd5735a328a5831c506ffb665215ccd845d"
+  }
+}

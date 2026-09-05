@@ -1,0 +1,115 @@
+{
+  "track": "real",
+  "freeze_build_id": "803a18ccd31d67e0",
+  "alpha": 0.05,
+  "alpha_leg": 0.025,
+  "alpha_split": 0.5,
+  "bh_q": 0.1,
+  "family_unit": "window",
+  "headline_legs": [
+    "mag",
+    "dir"
+  ],
+  "best_of_forbidden": true,
+  "families": 3,
+  "gate_9_failures": [],
+  "holm": {
+    "mag": {
+      "alpha": 0.025,
+      "role": "headline",
+      "pairs": 427,
+      "families": 3,
+      "rejections": 14,
+      "families_with_a_rejection": 2,
+      "min_adjusted_p": 6.549999999999999e-05
+    },
+    "dir": {
+      "alpha": 0.025,
+      "role": "headline",
+      "pairs": 427,
+      "families": 3,
+      "rejections": 7,
+      "families_with_a_rejection": 2,
+      "min_adjusted_p": 0.0001175
+    },
+    "dnc": {
+      "alpha": 0.05,
+      "role": "sensitivity",
+      "pairs": 427,
+      "families": 3,
+      "rejections": 7,
+      "families_with_a_rejection": 2,
+      "min_adjusted_p": 6.549999999999999e-05
+    },
+    "dfa": {
+      "alpha": 0.05,
+      "role": "sensitivity",
+      "pairs": 427,
+      "families": 3,
+      "rejections": 7,
+      "families_with_a_rejection": 2,
+      "min_adjusted_p": 6.549999999999999e-05
+    }
+  },
+  "bh_review": {
+    "mag": {
+      "q": 0.1,
+      "pairs": 4238,
+      "families": 3,
+      "screened": 17
+    },
+    "dir": {
+      "q": 0.1,
+      "pairs": 4238,
+      "families": 3,
+      "screened": 7
+    }
+  },
+  "headline": {
+    "rejections": 18,
+    "by_leg": {
+      "mag": 11,
+      "dir": 4,
+      "both": 3,
+      "none": 4220
+    },
+    "rule": "reject_mag | reject_dir"
+  },
+  "sensitivity_cannot_promote": {
+    "dnc": {
+      "rejections": 7,
+      "sensitivity_only": 1,
+      "both": 6,
+      "headline_only": 12,
+      "neither": 4219
+    },
+    "dfa": {
+      "rejections": 7,
+      "sensitivity_only": 1,
+      "both": 6,
+      "headline_only": 12,
+      "neither": 4219
+    }
+  },
+  "pooled_dnc_frozen_regression": {
+    "status": "bit_equal",
+    "rows": 427,
+    "rejections": 6,
+    "vector_sha256": "c544fbdd8e82d77108251381f2fc9db4de33387028b68a4d3fd41800fdf4c979",
+    "family_unit": "stream (v1.2.0 regression only)"
+  },
+  "window_family_dnc_regression": {
+    "rejections": 7,
+    "expected_rejections": 7
+  },
+  "second_seed_review": {
+    "seed_base": 2026081602,
+    "windows": 0,
+    "pairs": 0,
+    "unstable_leg_decisions": 0,
+    "unstable_headline_decisions": 0,
+    "detail": [],
+    "note": "the frozen first-seed p-values remain the reported values"
+  },
+  "outputs": {}
+}

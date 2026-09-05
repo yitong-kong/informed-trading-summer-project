@@ -1,0 +1,40 @@
+{
+  "study": "Q3 -- cross-contract transfer of an online alarm window",
+  "config_version": "q3-config-2.1.0",
+  "seed_base": 2026081901,
+  "authoritative_inputs": {
+    "data/detect/cusum_real_alarms.parquet": "80688d44fd10ef3e82ae4759d05d18251d31171b15a778e4e74ef81299605f05",
+    "data/detect/cusum_calibration.json": "f01a6264f023bf6444135cf9bdcfd6be8642cffc89fb5622311650d24714e264",
+    "data/processed/trades_event_level.parquet": "4834d015d855f2ca652b1865ebb2418986ae275e3315be3bb0fac280951288c6"
+  },
+  "engine": {
+    "transfer.py": "bdcd0192189cf9449133b22e14b9d9ad00f21f78dd519a54467c5be4a5815e9e"
+  },
+  "reused_q2_modules": {
+    "aggregate.py": "6b61a70ad2a21cacfb584185e62b2b672feaad2af7c9fb172a965a633c57dc4b",
+    "decompose.py": "b6c0e640952df14ea87f220bc93a6d216d8402e8b7989512c5685c6acf222af2",
+    "ids.py": "b5968d5f3e9264e768d445d1642a04a576917d3f416f673ef1f07d6c4ae5ccc3",
+    "multiplicity.py": "a0eea84e0f4a2847d59c1b2de3bac4b773fa71f952fc092fb99557704b780cb5",
+    "orbit.py": "ea72a9e47eecce84e7841a02b391fdf0ca51cb65a2384bc4ad97bb8d5958f589",
+    "permute.py": "ad06b85c27c32bb88ac5b1690d563099280148af86d98d8292a77a0b274e6e18",
+    "sources.py": "2141d6f6221af49da2fd41b86122d87e70841c7d2b6f0f711e69035dbde5c72f"
+  },
+  "outputs": {
+    "q2_products_at_q3_freeze.json": "1def2f3c78e6549cfa8a3b412156631d7b888df34f6c30bf2c9e218e4e332ec8",
+    "q3_config.json": "8f6f9e26307c12c2e9b7669231f3cbdf40c67600940fce22ecebb19dadbe8552",
+    "q3_membership.parquet": "f69b790c825c43d1cb71b0054cabee354f3b19d26e88073347f68939d215c696",
+    "q3_summary.json": "966961e97686039f5a33fc55ecf7f4b7e319c567370c095a1a1edbac45df9f52",
+    "q3_wallet_windows.parquet": "33164c9f3716fa37ecac061ce41941616e98425cf4688cfafdba9c78e6b7de43",
+    "q3_windows.parquet": "fb41790eac8f5a7ee13f81892bf0cbd2daa030ebb8e6ee258ee7f2071ca97472"
+  },
+  "isolation": {
+    "q2_products": "read-only; Q3 writes nothing under data/attrib/real, data/attrib/sim or results/q2",
+    "multiplicity": "the Q3 Holm family is never merged with the Q2 family",
+    "ground_truth": "the study reads the real cluster only. No simulated stream and no scenario manifest is opened anywhere in this module, so no file it writes can carry a truth label"
+  },
+  "self_reference": "q3_hashes.json is the only file of this directory it does not hash, because it cannot hash itself",
+  "q2_products_changed": {
+    "real": [],
+    "sim": []
+  }
+}

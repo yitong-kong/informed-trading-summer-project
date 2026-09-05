@@ -1,0 +1,77 @@
+{
+  "track": "real",
+  "freeze_build_id": "803a18ccd31d67e0",
+  "rows": 5103,
+  "pairs": 4238,
+  "context_only_rows": 865,
+  "family_unit": "window",
+  "families": 3,
+  "official_onset": "onset_bucket, the first bucket of the wide window",
+  "history_columns": [
+    "condition_id",
+    "timestamp",
+    "transaction_hash",
+    "active_wallet",
+    "gross_shares"
+  ],
+  "gate_5_profile_failures": [],
+  "rank_failures": [],
+  "count_failures": [],
+  "profiles": {
+    "NEW": 3283,
+    "OLD_SMALL": 478,
+    "OLD_LARGE": 477
+  },
+  "cells": {
+    "total": 222,
+    "by_window": [
+      117,
+      84,
+      21
+    ],
+    "single_wallet_cells": 1
+  },
+  "windows": [
+    {
+      "window_id": "real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|imbalance|K100|a84",
+      "profile_cutoff": 68.9659085,
+      "pairs": 318,
+      "context_only": 0,
+      "abs_wallet_dnc_total": 15.493690572297673,
+      "dnc_scaled_abs_sum": 0.7643918199903,
+      "profiles": {
+        "NEW": 152,
+        "OLD_SMALL": 83,
+        "OLD_LARGE": 83
+      }
+    },
+    {
+      "window_id": "real|0xa953bea944d7264285c0a2cc1f92809a7d9db78138b1c3de9cc23d8917f14d6a|imbalance|K100|a88",
+      "profile_cutoff": 58.16,
+      "pairs": 1711,
+      "context_only": 95,
+      "abs_wallet_dnc_total": 78.06399549502393,
+      "dnc_scaled_abs_sum": 0.7873553201127665,
+      "profiles": {
+        "NEW": 1224,
+        "OLD_SMALL": 244,
+        "OLD_LARGE": 243
+      }
+    },
+    {
+      "window_id": "real|0xafc235557ace53ff0b0d2e93392314a7c3f3daab26a79050e985c11282f66df7|imbalance|K100|a103",
+      "profile_cutoff": 88.0759255,
+      "pairs": 2209,
+      "context_only": 770,
+      "abs_wallet_dnc_total": 109.54253870337831,
+      "dnc_scaled_abs_sum": 0.7905699945613427,
+      "profiles": {
+        "NEW": 1907,
+        "OLD_SMALL": 151,
+        "OLD_LARGE": 151
+      }
+    }
+  ],
+  "dnc_scaled_note": "a comparable magnitude, not a share of the alarm score: signed sums cancel, so it does not add to one",
+  "outputs": {}
+}

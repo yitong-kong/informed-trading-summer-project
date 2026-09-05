@@ -1,0 +1,66 @@
+{
+  "track": "sim",
+  "freeze_build_id": "b8fec2cc93371ff0",
+  "draws": 1999999,
+  "p_denominator": 2000000,
+  "seed_base": 2026081601,
+  "n_seeds": 1,
+  "batch_size": 512,
+  "workers": 16,
+  "checkpointing": false,
+  "restart_policy": "a failed run restarts from the beginning",
+  "numpy_version": "2.4.6",
+  "tie_rule": ">=",
+  "windows": 61,
+  "pairs": 44723,
+  "gate_6_failures": [],
+  "gate_7_failures": [],
+  "dnc_frozen_regression": {
+    "status": "bit_equal",
+    "rows": 44723,
+    "vector_sha256": "54a52c257213feb26fe7667a390cf658094e6947ce3c89639f5afe296587de0b",
+    "baseline": "q2_config.json expected_counts.dnc_v1_2_0"
+  },
+  "p_raw_dnc": {
+    "min": 5e-07,
+    "median": 0.5714625,
+    "at_grid_floor": 18,
+    "exactly_one": 1348
+  },
+  "p_raw_dfa": {
+    "min": 5e-07,
+    "median": 0.571541,
+    "at_grid_floor": 19,
+    "exactly_one": 1348
+  },
+  "p_raw_mag": {
+    "min": 5e-07,
+    "median": 0.5724415,
+    "at_grid_floor": 62,
+    "exactly_one": 1359
+  },
+  "p_raw_dir": {
+    "min": 5e-07,
+    "median": 0.9261255,
+    "at_grid_floor": 88,
+    "exactly_one": 21125
+  },
+  "p_raw_below_orbit_floor": 513,
+  "p_raw_below_orbit_floor_note": "expected and never corrected: the orbit floor bounds the exact orbit p-value, while a sampled p can undershoot it when B draws happen to miss the ties that the complete orbit contains",
+  "confirmatory": {
+    "pairs": 4319,
+    "magnitude": {
+      "min_p_raw": 5e-07,
+      "below_first_threshold": 153
+    },
+    "direction": {
+      "min_p_raw": 5e-07,
+      "below_first_threshold": 128,
+      "structurally_reachable": 240,
+      "floor_log10_min": -182.07846474557613
+    },
+    "mc_review_required": 6,
+    "second_seed_trigger_sigma": 3.0
+  },
+  "outputs": {}
+}

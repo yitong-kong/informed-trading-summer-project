@@ -1,0 +1,207 @@
+scope,block,stratum,instances,metric,count,rate,note
+canonical_run,recall_by_n_trades_mle,1-2,6,mag_rejected,0,0.0,
+canonical_run,recall_by_n_trades_mle,1-2,6,dir_rejected,0,0.0,
+canonical_run,recall_by_n_trades_mle,1-2,6,union_rejected,0,0.0,
+canonical_run,recall_by_n_trades_mle,1-2,6,magnitude_top10,1,0.1667,
+canonical_run,recall_by_n_trades_mle,3-6,11,mag_rejected,10,0.9091,
+canonical_run,recall_by_n_trades_mle,3-6,11,dir_rejected,0,0.0,
+canonical_run,recall_by_n_trades_mle,3-6,11,union_rejected,10,0.9091,
+canonical_run,recall_by_n_trades_mle,3-6,11,magnitude_top10,11,1.0,
+canonical_run,recall_by_n_trades_mle,7-15,8,mag_rejected,7,0.875,
+canonical_run,recall_by_n_trades_mle,7-15,8,dir_rejected,0,0.0,
+canonical_run,recall_by_n_trades_mle,7-15,8,union_rejected,7,0.875,
+canonical_run,recall_by_n_trades_mle,7-15,8,magnitude_top10,8,1.0,
+canonical_run,recall_by_n_trades_mle,16-40,19,mag_rejected,3,0.1579,
+canonical_run,recall_by_n_trades_mle,16-40,19,dir_rejected,9,0.4737,
+canonical_run,recall_by_n_trades_mle,16-40,19,union_rejected,10,0.5263,
+canonical_run,recall_by_n_trades_mle,16-40,19,magnitude_top10,19,1.0,
+canonical_run,recall_by_n_trades_mle,41-100,50,mag_rejected,27,0.54,
+canonical_run,recall_by_n_trades_mle,41-100,50,dir_rejected,49,0.98,
+canonical_run,recall_by_n_trades_mle,41-100,50,union_rejected,49,0.98,
+canonical_run,recall_by_n_trades_mle,41-100,50,magnitude_top10,50,1.0,
+canonical_run,recall_by_n_trades_mle,101+,72,mag_rejected,61,0.8472,
+canonical_run,recall_by_n_trades_mle,101+,72,dir_rejected,69,0.9583,
+canonical_run,recall_by_n_trades_mle,101+,72,union_rejected,69,0.9583,
+canonical_run,recall_by_n_trades_mle,101+,72,magnitude_top10,69,0.9583,
+canonical_run,recall_by_level_and_mode,L0 x additive_trades,6,mag_rejected,4,0.6667,
+canonical_run,recall_by_level_and_mode,L0 x additive_trades,6,dir_rejected,0,0.0,
+canonical_run,recall_by_level_and_mode,L0 x additive_trades,6,union_rejected,4,0.6667,
+canonical_run,recall_by_level_and_mode,L0 x additive_trades,6,magnitude_top10,4,0.6667,
+canonical_run,recall_by_level_and_mode,L0 x direction_tilt_same_count,24,mag_rejected,12,0.5,
+canonical_run,recall_by_level_and_mode,L0 x direction_tilt_same_count,24,dir_rejected,21,0.875,
+canonical_run,recall_by_level_and_mode,L0 x direction_tilt_same_count,24,union_rejected,21,0.875,
+canonical_run,recall_by_level_and_mode,L0 x direction_tilt_same_count,24,magnitude_top10,24,1.0,
+canonical_run,recall_by_level_and_mode,L0 x size_tilt,24,mag_rejected,23,0.9583,
+canonical_run,recall_by_level_and_mode,L0 x size_tilt,24,dir_rejected,24,1.0,
+canonical_run,recall_by_level_and_mode,L0 x size_tilt,24,union_rejected,24,1.0,
+canonical_run,recall_by_level_and_mode,L0 x size_tilt,24,magnitude_top10,24,1.0,
+canonical_run,recall_by_level_and_mode,L1 x additive_trades,16,mag_rejected,13,0.8125,
+canonical_run,recall_by_level_and_mode,L1 x additive_trades,16,dir_rejected,1,0.0625,
+canonical_run,recall_by_level_and_mode,L1 x additive_trades,16,union_rejected,13,0.8125,
+canonical_run,recall_by_level_and_mode,L1 x additive_trades,16,magnitude_top10,15,0.9375,
+canonical_run,recall_by_level_and_mode,L1 x direction_tilt_same_count,24,mag_rejected,5,0.2083,
+canonical_run,recall_by_level_and_mode,L1 x direction_tilt_same_count,24,dir_rejected,21,0.875,
+canonical_run,recall_by_level_and_mode,L1 x direction_tilt_same_count,24,union_rejected,21,0.875,
+canonical_run,recall_by_level_and_mode,L1 x direction_tilt_same_count,24,magnitude_top10,24,1.0,
+canonical_run,recall_by_level_and_mode,L1 x size_tilt,24,mag_rejected,23,0.9583,
+canonical_run,recall_by_level_and_mode,L1 x size_tilt,24,dir_rejected,24,1.0,
+canonical_run,recall_by_level_and_mode,L1 x size_tilt,24,union_rejected,24,1.0,
+canonical_run,recall_by_level_and_mode,L1 x size_tilt,24,magnitude_top10,24,1.0,
+canonical_run,recall_by_level_and_mode,L2 x additive_trades,3,mag_rejected,1,0.3333,
+canonical_run,recall_by_level_and_mode,L2 x additive_trades,3,dir_rejected,0,0.0,
+canonical_run,recall_by_level_and_mode,L2 x additive_trades,3,union_rejected,1,0.3333,
+canonical_run,recall_by_level_and_mode,L2 x additive_trades,3,magnitude_top10,1,0.3333,
+canonical_run,recall_by_level_and_mode,L2 x direction_tilt_same_count,21,mag_rejected,8,0.381,
+canonical_run,recall_by_level_and_mode,L2 x direction_tilt_same_count,21,dir_rejected,12,0.5714,
+canonical_run,recall_by_level_and_mode,L2 x direction_tilt_same_count,21,union_rejected,13,0.619,
+canonical_run,recall_by_level_and_mode,L2 x direction_tilt_same_count,21,magnitude_top10,18,0.8571,
+canonical_run,recall_by_level_and_mode,L2 x size_tilt,24,mag_rejected,19,0.7917,
+canonical_run,recall_by_level_and_mode,L2 x size_tilt,24,dir_rejected,24,1.0,
+canonical_run,recall_by_level_and_mode,L2 x size_tilt,24,union_rejected,24,1.0,
+canonical_run,recall_by_level_and_mode,L2 x size_tilt,24,magnitude_top10,24,1.0,
+canonical_run,negative_control,wallet_concentration_only,6,mag_rejected,0,0.0,
+canonical_run,negative_control,wallet_concentration_only,6,dir_rejected,0,0.0,
+canonical_run,negative_control,wallet_concentration_only,6,union_rejected,0,0.0,
+canonical_run,negative_control,wallet_concentration_only,6,magnitude_top10,0,0.0,concentration without directional flow: it is not a recall target and is never folded into the rates above
+canonical_run,bin_and_mode_composition,1-2 x additive_trades,6,union_rejected,0,0.0,recall tracks the injection mode more than the slot count; read the two axes together
+canonical_run,bin_and_mode_composition,101+ x direction_tilt_same_count,28,union_rejected,25,0.8929,recall tracks the injection mode more than the slot count; read the two axes together
+canonical_run,bin_and_mode_composition,101+ x size_tilt,44,union_rejected,44,1.0,recall tracks the injection mode more than the slot count; read the two axes together
+canonical_run,bin_and_mode_composition,16-40 x additive_trades,1,union_rejected,1,1.0,recall tracks the injection mode more than the slot count; read the two axes together
+canonical_run,bin_and_mode_composition,16-40 x direction_tilt_same_count,18,union_rejected,9,0.5,recall tracks the injection mode more than the slot count; read the two axes together
+canonical_run,bin_and_mode_composition,3-6 x additive_trades,11,union_rejected,10,0.9091,recall tracks the injection mode more than the slot count; read the two axes together
+canonical_run,bin_and_mode_composition,41-100 x direction_tilt_same_count,22,union_rejected,21,0.9545,recall tracks the injection mode more than the slot count; read the two axes together
+canonical_run,bin_and_mode_composition,41-100 x size_tilt,28,union_rejected,28,1.0,recall tracks the injection mode more than the slot count; read the two axes together
+canonical_run,bin_and_mode_composition,7-15 x additive_trades,7,union_rejected,7,1.0,recall tracks the injection mode more than the slot count; read the two axes together
+canonical_run,bin_and_mode_composition,7-15 x direction_tilt_same_count,1,union_rejected,0,0.0,recall tracks the injection mode more than the slot count; read the two axes together
+canonical_run,recall_by_n_trades_mle,all directional modes,166,aggregate_mag_rejected,108,0.6506,"every injected instance, eligible or not; dominated by the large-participation bins, so never quote it without the binned table beside it, and never quote the union without both legs"
+canonical_run,recall_by_n_trades_mle,all directional modes,166,aggregate_dir_rejected,127,0.7651,"every injected instance, eligible or not; dominated by the large-participation bins, so never quote it without the binned table beside it, and never quote the union without both legs"
+canonical_run,recall_by_n_trades_mle,all directional modes,166,aggregate_union_rejected,145,0.8735,"every injected instance, eligible or not; dominated by the large-participation bins, so never quote it without the binned table beside it, and never quote the union without both legs"
+canonical_run,recall_by_n_trades_mle,all directional modes,166,aggregate_magnitude_top10,158,0.9518,"every injected instance, eligible or not; dominated by the large-participation bins, so never quote it without the binned table beside it, and never quote the union without both legs"
+canonical_run,recall_by_n_trades_mle,all directional modes (confirmatory),160,aggregate_mag_rejected,108,0.675,"the acceptance denominator: instances inside the confirmatory family; dominated by the large-participation bins, so never quote it without the binned table beside it, and never quote the union without both legs"
+canonical_run,recall_by_n_trades_mle,all directional modes (confirmatory),160,aggregate_dir_rejected,127,0.7938,"the acceptance denominator: instances inside the confirmatory family; dominated by the large-participation bins, so never quote it without the binned table beside it, and never quote the union without both legs"
+canonical_run,recall_by_n_trades_mle,all directional modes (confirmatory),160,aggregate_union_rejected,145,0.9062,"the acceptance denominator: instances inside the confirmatory family; dominated by the large-participation bins, so never quote it without the binned table beside it, and never quote the union without both legs"
+canonical_run,recall_by_n_trades_mle,all directional modes (confirmatory),160,aggregate_magnitude_top10,157,0.9812,"the acceptance denominator: instances inside the confirmatory family; dominated by the large-participation bins, so never quote it without the binned table beside it, and never quote the union without both legs"
+canonical_run,engine_correctness,canonical runs,61,conservation_pass,61,1.0,worst residuals per_trade_dfa 0.0e+00; per_bucket_llr 1.3e-15; per_run_w_alarm 7.1e-15
+canonical_run,engine_correctness,injected instances,166,in_confirmatory_family,160,0.9639,
+canonical_run,engine_correctness,injected instances (eligible),160,orbit_reaches_threshold,160,1.0,an instance whose orbit floor cannot clear its Holm threshold could never have been rejected
+canonical_run,conditional_h0,pure H0 alarms,1,studies_with_a_holm_rejection,1,1.0,streams with no injection at all: the only genuinely null unit here
+canonical_run,conditional_h0,pure H0 alarms,88,confirmatory_pairs_rejected,2,0.022727,
+canonical_run,conditional_h0,window before tau,17,studies_with_a_holm_rejection,16,0.9412,NOT a clean null unit - the injected wallets trade in these windows too; see the next line
+canonical_run,conditional_h0,window before tau,1108,confirmatory_pairs_rejected,57,0.051444,
+canonical_run,conditional_h0,window before tau (non-injected pairs),17,studies_with_a_holm_rejection,5,0.2941,the injection-free part of those windows: the closest thing to a conditional H0 rate this grid offers. A rejection here is not automatically a procedure failure - the streams are block bootstrapped from real order flow and exchangeability is a strong null that genuine wallet concentration violates
+canonical_run,conditional_h0,window before tau (non-injected pairs),1062,confirmatory_pairs_rejected,15,0.014124,
+canonical_run,conditional_h0,window before tau,57,rejections_that_are_injected_wallets,42,0.7368,why the line above is not a false-positive rate
+episode_dedup,recall_by_n_trades_mle,1-2,6,mag_rejected,0,0.0,
+episode_dedup,recall_by_n_trades_mle,1-2,6,dir_rejected,0,0.0,
+episode_dedup,recall_by_n_trades_mle,1-2,6,union_rejected,0,0.0,
+episode_dedup,recall_by_n_trades_mle,1-2,6,magnitude_top10,1,0.1667,
+episode_dedup,recall_by_n_trades_mle,3-6,11,mag_rejected,10,0.9091,
+episode_dedup,recall_by_n_trades_mle,3-6,11,dir_rejected,0,0.0,
+episode_dedup,recall_by_n_trades_mle,3-6,11,union_rejected,10,0.9091,
+episode_dedup,recall_by_n_trades_mle,3-6,11,magnitude_top10,11,1.0,
+episode_dedup,recall_by_n_trades_mle,7-15,8,mag_rejected,7,0.875,
+episode_dedup,recall_by_n_trades_mle,7-15,8,dir_rejected,0,0.0,
+episode_dedup,recall_by_n_trades_mle,7-15,8,union_rejected,7,0.875,
+episode_dedup,recall_by_n_trades_mle,7-15,8,magnitude_top10,8,1.0,
+episode_dedup,recall_by_n_trades_mle,16-40,19,mag_rejected,3,0.1579,
+episode_dedup,recall_by_n_trades_mle,16-40,19,dir_rejected,9,0.4737,
+episode_dedup,recall_by_n_trades_mle,16-40,19,union_rejected,10,0.5263,
+episode_dedup,recall_by_n_trades_mle,16-40,19,magnitude_top10,19,1.0,
+episode_dedup,recall_by_n_trades_mle,41-100,39,mag_rejected,19,0.4872,
+episode_dedup,recall_by_n_trades_mle,41-100,39,dir_rejected,38,0.9744,
+episode_dedup,recall_by_n_trades_mle,41-100,39,union_rejected,38,0.9744,
+episode_dedup,recall_by_n_trades_mle,41-100,39,magnitude_top10,39,1.0,
+episode_dedup,recall_by_n_trades_mle,101+,71,mag_rejected,60,0.8451,
+episode_dedup,recall_by_n_trades_mle,101+,71,dir_rejected,68,0.9577,
+episode_dedup,recall_by_n_trades_mle,101+,71,union_rejected,68,0.9577,
+episode_dedup,recall_by_n_trades_mle,101+,71,magnitude_top10,68,0.9577,
+episode_dedup,recall_by_level_and_mode,L0 x additive_trades,6,mag_rejected,4,0.6667,
+episode_dedup,recall_by_level_and_mode,L0 x additive_trades,6,dir_rejected,0,0.0,
+episode_dedup,recall_by_level_and_mode,L0 x additive_trades,6,union_rejected,4,0.6667,
+episode_dedup,recall_by_level_and_mode,L0 x additive_trades,6,magnitude_top10,4,0.6667,
+episode_dedup,recall_by_level_and_mode,L0 x direction_tilt_same_count,24,mag_rejected,12,0.5,
+episode_dedup,recall_by_level_and_mode,L0 x direction_tilt_same_count,24,dir_rejected,21,0.875,
+episode_dedup,recall_by_level_and_mode,L0 x direction_tilt_same_count,24,union_rejected,21,0.875,
+episode_dedup,recall_by_level_and_mode,L0 x direction_tilt_same_count,24,magnitude_top10,24,1.0,
+episode_dedup,recall_by_level_and_mode,L0 x size_tilt,18,mag_rejected,17,0.9444,
+episode_dedup,recall_by_level_and_mode,L0 x size_tilt,18,dir_rejected,18,1.0,
+episode_dedup,recall_by_level_and_mode,L0 x size_tilt,18,union_rejected,18,1.0,
+episode_dedup,recall_by_level_and_mode,L0 x size_tilt,18,magnitude_top10,18,1.0,
+episode_dedup,recall_by_level_and_mode,L1 x additive_trades,16,mag_rejected,13,0.8125,
+episode_dedup,recall_by_level_and_mode,L1 x additive_trades,16,dir_rejected,1,0.0625,
+episode_dedup,recall_by_level_and_mode,L1 x additive_trades,16,union_rejected,13,0.8125,
+episode_dedup,recall_by_level_and_mode,L1 x additive_trades,16,magnitude_top10,15,0.9375,
+episode_dedup,recall_by_level_and_mode,L1 x direction_tilt_same_count,24,mag_rejected,5,0.2083,
+episode_dedup,recall_by_level_and_mode,L1 x direction_tilt_same_count,24,dir_rejected,21,0.875,
+episode_dedup,recall_by_level_and_mode,L1 x direction_tilt_same_count,24,union_rejected,21,0.875,
+episode_dedup,recall_by_level_and_mode,L1 x direction_tilt_same_count,24,magnitude_top10,24,1.0,
+episode_dedup,recall_by_level_and_mode,L1 x size_tilt,21,mag_rejected,21,1.0,
+episode_dedup,recall_by_level_and_mode,L1 x size_tilt,21,dir_rejected,21,1.0,
+episode_dedup,recall_by_level_and_mode,L1 x size_tilt,21,union_rejected,21,1.0,
+episode_dedup,recall_by_level_and_mode,L1 x size_tilt,21,magnitude_top10,21,1.0,
+episode_dedup,recall_by_level_and_mode,L2 x additive_trades,3,mag_rejected,1,0.3333,
+episode_dedup,recall_by_level_and_mode,L2 x additive_trades,3,dir_rejected,0,0.0,
+episode_dedup,recall_by_level_and_mode,L2 x additive_trades,3,union_rejected,1,0.3333,
+episode_dedup,recall_by_level_and_mode,L2 x additive_trades,3,magnitude_top10,1,0.3333,
+episode_dedup,recall_by_level_and_mode,L2 x direction_tilt_same_count,21,mag_rejected,8,0.381,
+episode_dedup,recall_by_level_and_mode,L2 x direction_tilt_same_count,21,dir_rejected,12,0.5714,
+episode_dedup,recall_by_level_and_mode,L2 x direction_tilt_same_count,21,union_rejected,13,0.619,
+episode_dedup,recall_by_level_and_mode,L2 x direction_tilt_same_count,21,magnitude_top10,18,0.8571,
+episode_dedup,recall_by_level_and_mode,L2 x size_tilt,21,mag_rejected,18,0.8571,
+episode_dedup,recall_by_level_and_mode,L2 x size_tilt,21,dir_rejected,21,1.0,
+episode_dedup,recall_by_level_and_mode,L2 x size_tilt,21,union_rejected,21,1.0,
+episode_dedup,recall_by_level_and_mode,L2 x size_tilt,21,magnitude_top10,21,1.0,
+episode_dedup,bin_and_mode_composition,1-2 x additive_trades,6,union_rejected,0,0.0,recall tracks the injection mode more than the slot count; read the two axes together
+episode_dedup,bin_and_mode_composition,101+ x direction_tilt_same_count,28,union_rejected,25,0.8929,recall tracks the injection mode more than the slot count; read the two axes together
+episode_dedup,bin_and_mode_composition,101+ x size_tilt,43,union_rejected,43,1.0,recall tracks the injection mode more than the slot count; read the two axes together
+episode_dedup,bin_and_mode_composition,16-40 x additive_trades,1,union_rejected,1,1.0,recall tracks the injection mode more than the slot count; read the two axes together
+episode_dedup,bin_and_mode_composition,16-40 x direction_tilt_same_count,18,union_rejected,9,0.5,recall tracks the injection mode more than the slot count; read the two axes together
+episode_dedup,bin_and_mode_composition,3-6 x additive_trades,11,union_rejected,10,0.9091,recall tracks the injection mode more than the slot count; read the two axes together
+episode_dedup,bin_and_mode_composition,41-100 x direction_tilt_same_count,22,union_rejected,21,0.9545,recall tracks the injection mode more than the slot count; read the two axes together
+episode_dedup,bin_and_mode_composition,41-100 x size_tilt,17,union_rejected,17,1.0,recall tracks the injection mode more than the slot count; read the two axes together
+episode_dedup,bin_and_mode_composition,7-15 x additive_trades,7,union_rejected,7,1.0,recall tracks the injection mode more than the slot count; read the two axes together
+episode_dedup,bin_and_mode_composition,7-15 x direction_tilt_same_count,1,union_rejected,0,0.0,recall tracks the injection mode more than the slot count; read the two axes together
+episode_dedup,recall_by_n_trades_mle,all directional modes,154,aggregate_mag_rejected,99,0.6429,"every injected instance, eligible or not; dominated by the large-participation bins, so never quote it without the binned table beside it, and never quote the union without both legs"
+episode_dedup,recall_by_n_trades_mle,all directional modes,154,aggregate_dir_rejected,115,0.7468,"every injected instance, eligible or not; dominated by the large-participation bins, so never quote it without the binned table beside it, and never quote the union without both legs"
+episode_dedup,recall_by_n_trades_mle,all directional modes,154,aggregate_union_rejected,133,0.8636,"every injected instance, eligible or not; dominated by the large-participation bins, so never quote it without the binned table beside it, and never quote the union without both legs"
+episode_dedup,recall_by_n_trades_mle,all directional modes,154,aggregate_magnitude_top10,146,0.9481,"every injected instance, eligible or not; dominated by the large-participation bins, so never quote it without the binned table beside it, and never quote the union without both legs"
+episode_dedup,recall_by_n_trades_mle,all directional modes (confirmatory),148,aggregate_mag_rejected,99,0.6689,"the acceptance denominator: instances inside the confirmatory family; dominated by the large-participation bins, so never quote it without the binned table beside it, and never quote the union without both legs"
+episode_dedup,recall_by_n_trades_mle,all directional modes (confirmatory),148,aggregate_dir_rejected,115,0.777,"the acceptance denominator: instances inside the confirmatory family; dominated by the large-participation bins, so never quote it without the binned table beside it, and never quote the union without both legs"
+episode_dedup,recall_by_n_trades_mle,all directional modes (confirmatory),148,aggregate_union_rejected,133,0.8986,"the acceptance denominator: instances inside the confirmatory family; dominated by the large-participation bins, so never quote it without the binned table beside it, and never quote the union without both legs"
+episode_dedup,recall_by_n_trades_mle,all directional modes (confirmatory),148,aggregate_magnitude_top10,145,0.9797,"the acceptance denominator: instances inside the confirmatory family; dominated by the large-participation bins, so never quote it without the binned table beside it, and never quote the union without both legs"
+episode_dedup,engine_correctness,canonical runs,53,conservation_pass,53,1.0,worst residuals per_trade_dfa 0.0e+00; per_bucket_llr 1.3e-15; per_run_w_alarm 7.1e-15
+episode_dedup,engine_correctness,injected instances,154,in_confirmatory_family,148,0.961,
+episode_dedup,engine_correctness,injected instances (eligible),148,orbit_reaches_threshold,148,1.0,an instance whose orbit floor cannot clear its Holm threshold could never have been rejected
+episode_dedup,conditional_h0,pure H0 alarms,1,studies_with_a_holm_rejection,1,1.0,streams with no injection at all: the only genuinely null unit here
+episode_dedup,conditional_h0,pure H0 alarms,88,confirmatory_pairs_rejected,2,0.022727,
+episode_dedup,conditional_h0,window before tau,17,studies_with_a_holm_rejection,16,0.9412,NOT a clean null unit - the injected wallets trade in these windows too; see the next line
+episode_dedup,conditional_h0,window before tau,1108,confirmatory_pairs_rejected,57,0.051444,
+episode_dedup,conditional_h0,window before tau (non-injected pairs),17,studies_with_a_holm_rejection,5,0.2941,the injection-free part of those windows: the closest thing to a conditional H0 rate this grid offers. A rejection here is not automatically a procedure failure - the streams are block bootstrapped from real order flow and exchangeability is a strong null that genuine wallet concentration violates
+episode_dedup,conditional_h0,window before tau (non-injected pairs),1062,confirmatory_pairs_rejected,15,0.014124,
+episode_dedup,conditional_h0,window before tau,57,rejections_that_are_injected_wallets,42,0.7368,why the line above is not a false-positive rate
+canonical_run,calibration,mag (all levels),61,empirical_study_wise_error,20,0.3279,nominal 0.025; t_star 5e-07; nominal Holm does not hold for this leg
+canonical_run,calibration,mag x L0,18,empirical_study_wise_error,0,0.0,nominal 0.025
+canonical_run,calibration,mag x L1,22,empirical_study_wise_error,1,0.0455,nominal 0.025
+canonical_run,calibration,mag x L2,21,empirical_study_wise_error,19,0.9048,nominal 0.025
+canonical_run,calibration,dir (all levels),61,empirical_study_wise_error,1,0.0164,nominal 0.025; t_star 0.00211
+canonical_run,calibration,dir x L0,18,empirical_study_wise_error,0,0.0,nominal 0.025
+canonical_run,calibration,dir x L1,22,empirical_study_wise_error,0,0.0,nominal 0.025
+canonical_run,calibration,dir x L2,21,empirical_study_wise_error,1,0.0476,nominal 0.025
+canonical_run,calibration,mag threshold,61,t_star,5e-07,0.05,"a mag-leg Holm rejection is reported as a finding only when its raw p is at or below t_star; the rest form the review queue. The dir leg is reported on its nominal Holm, because its measured error matches it"
+canonical_run,leg_agreement,confirmatory pairs,4319,both_legs_reject,91,0.4715,"mag only 65, dir only 37, union 193: the legs overlap little by construction: one reads rank position, the other trade counts, and the paper reports them apart rather than as one set"
+not_scoped,top10_group_sizes,mag,61,widest_tie_inclusive_top10,15,10.0,"only the mag leg carries the top-10 recall metric; the other leg's score is too coarse for the tier to mean anything at this roster size, and the max above is the evidence for that"
+not_scoped,top10_group_sizes,dir,61,widest_tie_inclusive_top10,1004,17.0,"only the mag leg carries the top-10 recall metric; the other leg's score is too coarse for the tier to mean anything at this roster size, and the max above is the evidence for that"
+not_scoped,gate_checks,G5_union_recall,,passed,145/160,,at least 140/160
+not_scoped,gate_checks,G5_negative_control,,passed,0/6,,0 rejections
+not_scoped,gate_checks,G6_direction_leg_l2,,passed,1/21,,at most 3/21 study-wise
+not_scoped,gate_checks,G6_magnitude_leg_l2_reported,,passed,19/21,,"reported honestly, whatever it isthis gate is a disclosure requirement, not a bound: the magnitude leg's background error is a result of the study"
+not_scoped,real_reference,confirmatory pairs,427,n_trades_mle_median,4.0,,the simulated bins comparable with the real data are 3-15 slots
+not_scoped,real_reference,confirmatory pairs,427,n_trades_mle_p75,6.0,,the simulated bins comparable with the real data are 3-15 slots
+not_scoped,real_reference,confirmatory pairs,427,n_trades_mle_p90,12.4,,the simulated bins comparable with the real data are 3-15 slots
+not_scoped,real_reference,confirmatory pairs,427,n_trades_mle_p99,40.5,,the simulated bins comparable with the real data are 3-15 slots
+not_scoped,real_reference,confirmatory pairs,427,n_trades_mle_max,75.0,,the simulated bins comparable with the real data are 3-15 slots
+episode_dedup,episode_dedup,duplicate membership groups,5,windows_collapsed,8,0.1311,"5 groups covering 13 windows share an MLE membership; 1 of them also carry identical trade sizes and DNC, the rest share slot identity only, so the collapse is by the pre-registered membership rule and not by the runs being the same experiment"
+not_scoped,episode_dedup,which reading is official,6,official_scope_per_block,,,recall_by_n_trades_mle=canonical_run; recall_by_level_and_mode=canonical_run; bin_and_mode_composition=canonical_run; negative_control=canonical_run; engine_correctness=canonical_run; conditional_h0=episode_dedup
+not_scoped,truth_isolation,assertion A (label rename),3,passed,1,,cells / profiles / contributions / eligibility / ranks / permutation counts all bit-identical
+not_scoped,truth_isolation,assertion B (truth unreachable),9,passed,1,,437 files opened during a full simulated freeze - none of them a manifest
+not_scoped,truth_isolation,canonical runs,61,distinct_episodes,53,,every block above is reported under both scopes; see the episode_dedup rows for which reading is official

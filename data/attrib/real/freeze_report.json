@@ -1,0 +1,52 @@
+{
+  "track": "real",
+  "freeze_build_id": "803a18ccd31d67e0",
+  "channel": "imbalance",
+  "streams": 4,
+  "replayed_runs": 8,
+  "gate_1_replay_mismatches": 0,
+  "gate_2_count_failures": [],
+  "counts": {
+    "canonical_runs": 3,
+    "distinct_episodes": 3,
+    "mle_slots": 7400,
+    "wide_slots": 9300,
+    "pairs": 4238,
+    "distinct_wallets": 4096,
+    "pairs_by_n_trades": {
+      "1": 3001,
+      "2": 810,
+      "ge3": 427
+    },
+    "confirmatory_pairs_by_window": [
+      61,
+      131,
+      235
+    ],
+    "wide_trades": [
+      700,
+      3000,
+      5600
+    ],
+    "mle_trades": [
+      700,
+      2800,
+      3900
+    ],
+    "streams_with_pairs": 1,
+    "untestable_runs": 0
+  },
+  "verified_inputs": {
+    "data/detect/cusum_calibration.json": "f01a6264f023bf6444135cf9bdcfd6be8642cffc89fb5622311650d24714e264",
+    "data/processed/trades_event_level.parquet": "4834d015d855f2ca652b1865ebb2418986ae275e3315be3bb0fac280951288c6",
+    "data/detect/cusum_real_alarms.parquet": "80688d44fd10ef3e82ae4759d05d18251d31171b15a778e4e74ef81299605f05"
+  },
+  "recorded_inputs": {},
+  "outputs": {
+    "detector_runs.parquet": "494b184bff280484b98e67a3e01b1e8f9c859d74d897f2dc1c2571bf24adc1ee",
+    "canonical_windows.parquet": "38cd87ce7c6bc23a78aef1433f2c567bde7fcbf81be3833f8aa60cfff2953dc5",
+    "detector_path.parquet": "341e2ca354d93912aa285350b7147c5f562ae5567bbadf711dd62f259de44124",
+    "window_membership.parquet": "d11b3cbf6056b01f1fcc7799248208a60e1287f66c1bbd84aed8da078357f77f",
+    "trade_attribution.parquet": "c79b3f3574ac17785f136c1e25559a041824dc066be7e13e30a471426facbb48"
+  }
+}

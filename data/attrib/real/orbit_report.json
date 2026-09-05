@@ -1,0 +1,237 @@
+{
+  "track": "real",
+  "freeze_build_id": "803a18ccd31d67e0",
+  "confirmatory_rule": "n_trades_mle >= 3",
+  "outside_confirmatory_reason": "fewer_than_3_mle_slots",
+  "alpha": 0.05,
+  "alpha_leg": 0.025,
+  "p_mc_min": 5e-07,
+  "p_mc_min_note": "the Monte Carlo grid floor: a sampled p-value can fall below p_orbit_floor through noise, so the two are never written as one bound",
+  "family_unit": "window",
+  "families_count": 3,
+  "pairs": 4238,
+  "confirmatory_family": 427,
+  "outside_confirmatory": 3811,
+  "orbit_reachable_screening_family": 339,
+  "orbit_reachable_confirmatory_family": 381,
+  "orbit_floor_at_threshold_screening": 0,
+  "orbit_floor_at_threshold_confirmatory": 0,
+  "orbit_reachable_confirmatory_family_legacy_float": 381,
+  "boundary_tie_note": "a pair whose orbit floor equals the first Holm threshold exactly. Holm rejects at p <= threshold, so it is reachable; the legacy_float count is the same number with such ties removed, which is what a floating log-gamma orbit size produced before this was corrected",
+  "max_holm_step_screening_family": 192,
+  "gate_8_failures": [],
+  "log_orbit_size": {
+    "min": 0.6931471805599453,
+    "median": 4.406719247264253,
+    "max": 132.71323270067046,
+    "zero_orbit_pairs": 0
+  },
+  "p_orbit_floor_log10_min": -57.636624637443376,
+  "p_orbit_floor_float_underflow_pairs": 0,
+  "p_orbit_floor_note": "1 / Omega is never zero; the float column saturates to 0 below about 1e-308, so p_orbit_floor_log10 is the field to read and to publish",
+  "boundary_tie_pairs": [],
+  "by_n_trades": [
+    {
+      "family_id": "real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|imbalance|K100|a84",
+      "n_trades_mle": "1",
+      "pairs": 188,
+      "confirmatory_eligible": 0,
+      "orbit_reachable_screening_family": 0,
+      "orbit_reachable_confirmatory_family": 0,
+      "median_log_orbit_size": 3.6375861597263857
+    },
+    {
+      "family_id": "real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|imbalance|K100|a84",
+      "n_trades_mle": "2",
+      "pairs": 69,
+      "confirmatory_eligible": 0,
+      "orbit_reachable_screening_family": 0,
+      "orbit_reachable_confirmatory_family": 0,
+      "median_log_orbit_size": 6.805722553416985
+    },
+    {
+      "family_id": "real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|imbalance|K100|a84",
+      "n_trades_mle": "3",
+      "pairs": 19,
+      "confirmatory_eligible": 19,
+      "orbit_reachable_screening_family": 13,
+      "orbit_reachable_confirmatory_family": 19,
+      "median_log_orbit_size": 9.920147993429236
+    },
+    {
+      "family_id": "real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|imbalance|K100|a84",
+      "n_trades_mle": "4",
+      "pairs": 13,
+      "confirmatory_eligible": 13,
+      "orbit_reachable_screening_family": 13,
+      "orbit_reachable_confirmatory_family": 13,
+      "median_log_orbit_size": 12.4130868149145
+    },
+    {
+      "family_id": "real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|imbalance|K100|a84",
+      "n_trades_mle": "5",
+      "pairs": 10,
+      "confirmatory_eligible": 10,
+      "orbit_reachable_screening_family": 10,
+      "orbit_reachable_confirmatory_family": 10,
+      "median_log_orbit_size": 15.535030923306685
+    },
+    {
+      "family_id": "real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|imbalance|K100|a84",
+      "n_trades_mle": "6+",
+      "pairs": 19,
+      "confirmatory_eligible": 19,
+      "orbit_reachable_screening_family": 19,
+      "orbit_reachable_confirmatory_family": 19,
+      "median_log_orbit_size": 24.893497411890703
+    },
+    {
+      "family_id": "real|0xa953bea944d7264285c0a2cc1f92809a7d9db78138b1c3de9cc23d8917f14d6a|imbalance|K100|a88",
+      "n_trades_mle": "1",
+      "pairs": 1333,
+      "confirmatory_eligible": 0,
+      "orbit_reachable_screening_family": 0,
+      "orbit_reachable_confirmatory_family": 0,
+      "median_log_orbit_size": 4.189654742026425
+    },
+    {
+      "family_id": "real|0xa953bea944d7264285c0a2cc1f92809a7d9db78138b1c3de9cc23d8917f14d6a|imbalance|K100|a88",
+      "n_trades_mle": "2",
+      "pairs": 247,
+      "confirmatory_eligible": 0,
+      "orbit_reachable_screening_family": 0,
+      "orbit_reachable_confirmatory_family": 0,
+      "median_log_orbit_size": 7.98139158158007
+    },
+    {
+      "family_id": "real|0xa953bea944d7264285c0a2cc1f92809a7d9db78138b1c3de9cc23d8917f14d6a|imbalance|K100|a88",
+      "n_trades_mle": "3",
+      "pairs": 46,
+      "confirmatory_eligible": 46,
+      "orbit_reachable_screening_family": 16,
+      "orbit_reachable_confirmatory_family": 33,
+      "median_log_orbit_size": 10.027647808026048
+    },
+    {
+      "family_id": "real|0xa953bea944d7264285c0a2cc1f92809a7d9db78138b1c3de9cc23d8917f14d6a|imbalance|K100|a88",
+      "n_trades_mle": "4",
+      "pairs": 22,
+      "confirmatory_eligible": 22,
+      "orbit_reachable_screening_family": 15,
+      "orbit_reachable_confirmatory_family": 21,
+      "median_log_orbit_size": 12.990946311841558
+    },
+    {
+      "family_id": "real|0xa953bea944d7264285c0a2cc1f92809a7d9db78138b1c3de9cc23d8917f14d6a|imbalance|K100|a88",
+      "n_trades_mle": "5",
+      "pairs": 11,
+      "confirmatory_eligible": 11,
+      "orbit_reachable_screening_family": 11,
+      "orbit_reachable_confirmatory_family": 11,
+      "median_log_orbit_size": 16.594874029677246
+    },
+    {
+      "family_id": "real|0xa953bea944d7264285c0a2cc1f92809a7d9db78138b1c3de9cc23d8917f14d6a|imbalance|K100|a88",
+      "n_trades_mle": "6+",
+      "pairs": 52,
+      "confirmatory_eligible": 52,
+      "orbit_reachable_screening_family": 52,
+      "orbit_reachable_confirmatory_family": 52,
+      "median_log_orbit_size": 26.921646448969852
+    },
+    {
+      "family_id": "real|0xafc235557ace53ff0b0d2e93392314a7c3f3daab26a79050e985c11282f66df7|imbalance|K100|a103",
+      "n_trades_mle": "1",
+      "pairs": 1480,
+      "confirmatory_eligible": 0,
+      "orbit_reachable_screening_family": 0,
+      "orbit_reachable_confirmatory_family": 0,
+      "median_log_orbit_size": 4.418840607796598
+    },
+    {
+      "family_id": "real|0xafc235557ace53ff0b0d2e93392314a7c3f3daab26a79050e985c11282f66df7|imbalance|K100|a103",
+      "n_trades_mle": "2",
+      "pairs": 494,
+      "confirmatory_eligible": 0,
+      "orbit_reachable_screening_family": 0,
+      "orbit_reachable_confirmatory_family": 0,
+      "median_log_orbit_size": 8.603554357064281
+    },
+    {
+      "family_id": "real|0xafc235557ace53ff0b0d2e93392314a7c3f3daab26a79050e985c11282f66df7|imbalance|K100|a103",
+      "n_trades_mle": "3",
+      "pairs": 98,
+      "confirmatory_eligible": 98,
+      "orbit_reachable_screening_family": 74,
+      "orbit_reachable_confirmatory_family": 80,
+      "median_log_orbit_size": 12.526861829173345
+    },
+    {
+      "family_id": "real|0xafc235557ace53ff0b0d2e93392314a7c3f3daab26a79050e985c11282f66df7|imbalance|K100|a103",
+      "n_trades_mle": "4",
+      "pairs": 52,
+      "confirmatory_eligible": 52,
+      "orbit_reachable_screening_family": 41,
+      "orbit_reachable_confirmatory_family": 42,
+      "median_log_orbit_size": 16.135424069926874
+    },
+    {
+      "family_id": "real|0xafc235557ace53ff0b0d2e93392314a7c3f3daab26a79050e985c11282f66df7|imbalance|K100|a103",
+      "n_trades_mle": "5",
+      "pairs": 25,
+      "confirmatory_eligible": 25,
+      "orbit_reachable_screening_family": 16,
+      "orbit_reachable_confirmatory_family": 22,
+      "median_log_orbit_size": 19.47518982747826
+    },
+    {
+      "family_id": "real|0xafc235557ace53ff0b0d2e93392314a7c3f3daab26a79050e985c11282f66df7|imbalance|K100|a103",
+      "n_trades_mle": "6+",
+      "pairs": 60,
+      "confirmatory_eligible": 60,
+      "orbit_reachable_screening_family": 59,
+      "orbit_reachable_confirmatory_family": 59,
+      "median_log_orbit_size": 27.937838454771104
+    }
+  ],
+  "families": [
+    {
+      "family_id": "real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|imbalance|K100|a84",
+      "m_screening": 318,
+      "m_confirmatory": 61,
+      "holm_first_threshold_screening": 7.861635220125786e-05,
+      "holm_first_threshold_confirmatory": 0.0004098360655737705,
+      "orbit_reachable_screening_family": 55,
+      "orbit_reachable_confirmatory_family": 61,
+      "orbit_floor_at_threshold_screening": 0,
+      "orbit_floor_at_threshold_confirmatory": 0,
+      "max_holm_step_screening_family": 56
+    },
+    {
+      "family_id": "real|0xa953bea944d7264285c0a2cc1f92809a7d9db78138b1c3de9cc23d8917f14d6a|imbalance|K100|a88",
+      "m_screening": 1711,
+      "m_confirmatory": 131,
+      "holm_first_threshold_screening": 1.4611338398597312e-05,
+      "holm_first_threshold_confirmatory": 0.00019083969465648855,
+      "orbit_reachable_screening_family": 94,
+      "orbit_reachable_confirmatory_family": 117,
+      "orbit_floor_at_threshold_screening": 0,
+      "orbit_floor_at_threshold_confirmatory": 0,
+      "max_holm_step_screening_family": 98
+    },
+    {
+      "family_id": "real|0xafc235557ace53ff0b0d2e93392314a7c3f3daab26a79050e985c11282f66df7|imbalance|K100|a103",
+      "m_screening": 2209,
+      "m_confirmatory": 235,
+      "holm_first_threshold_screening": 1.1317338162064282e-05,
+      "holm_first_threshold_confirmatory": 0.00010638297872340425,
+      "orbit_reachable_screening_family": 190,
+      "orbit_reachable_confirmatory_family": 203,
+      "orbit_floor_at_threshold_screening": 0,
+      "orbit_floor_at_threshold_confirmatory": 0,
+      "max_holm_step_screening_family": 192
+    }
+  ],
+  "families_truncated": false,
+  "outputs": {}
+}

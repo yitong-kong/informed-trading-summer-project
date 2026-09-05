@@ -1,0 +1,62 @@
+{
+  "track": "real",
+  "freeze_build_id": "803a18ccd31d67e0",
+  "authoritative_inputs": {
+    "data/detect/cusum_calibration.json": "f01a6264f023bf6444135cf9bdcfd6be8642cffc89fb5622311650d24714e264",
+    "data/processed/trades_event_level.parquet": "4834d015d855f2ca652b1865ebb2418986ae275e3315be3bb0fac280951288c6",
+    "data/detect/cusum_real_alarms.parquet": "80688d44fd10ef3e82ae4759d05d18251d31171b15a778e4e74ef81299605f05"
+  },
+  "plan": {
+    "q2_analysis_plan.json": "96a4a55ee5ae54894b4b3634ee7a74455323becd1b390e0be8e436761127c73c",
+    "q2_config.json": "bf75b2f596f24fc632ad8f18d0d3111ee7990a851208ed04ddcb77fedb81c2e5",
+    "q2_code_state.json": "19a80aa1df274662988dc280d9550b7c4678a6ed8998e40f3b6d6b0478fc7974"
+  },
+  "engine": {
+    "sha256": "94adb0a8d749f680c462d209d6955ff131e9474dae514f4d8bfa42e3fbb5223d",
+    "fork_module": "sources.py",
+    "modules": {
+      "__init__.py": "58855c1c2ddf685a316d1a9fd1e30037b27d23fed1974a1a6b4e1d5d3c2a35fc",
+      "aggregate.py": "6b61a70ad2a21cacfb584185e62b2b672feaad2af7c9fb172a965a633c57dc4b",
+      "decompose.py": "b6c0e640952df14ea87f220bc93a6d216d8402e8b7989512c5685c6acf222af2",
+      "evaluate.py": "31a80053c886c4d8cf3c87128c50a75aa957069f8776ad04ae4ac15dafa4a7b6",
+      "export.py": "f905c5e5ba3c88e86e6145c2ba886cc35e974e81f95917c22c75d3ded9619598",
+      "freeze.py": "fd281d655f9ac4d93b44e1bc7e2911d4dcc6cc7d9293738df3d0e8c198285ba8",
+      "ids.py": "b5968d5f3e9264e768d445d1642a04a576917d3f416f673ef1f07d6c4ae5ccc3",
+      "multiplicity.py": "a0eea84e0f4a2847d59c1b2de3bac4b773fa71f952fc092fb99557704b780cb5",
+      "orbit.py": "ea72a9e47eecce84e7841a02b391fdf0ca51cb65a2384bc4ad97bb8d5958f589",
+      "permute.py": "ad06b85c27c32bb88ac5b1690d563099280148af86d98d8292a77a0b274e6e18",
+      "plan.py": "c48e259013d6e8988705e868c80cdc8207a156f76f2b19c28a648056d87cafde",
+      "pvalues.py": "9ae33999122fd393822154c6bdb87da8cb6844909dec8da4a79e5da495a7ff04",
+      "sources.py": "2141d6f6221af49da2fd41b86122d87e70841c7d2b6f0f711e69035dbde5c72f",
+      "transfer.py": "bdcd0192189cf9449133b22e14b9d9ad00f21f78dd519a54467c5be4a5815e9e"
+    }
+  },
+  "outputs": {
+    "aggregate_report.json": "5f8f98e8506ac9e2f9199bad97e66dcdc66c59398cff8b4da75949eb1bc9d534",
+    "canonical_windows.parquet": "38cd87ce7c6bc23a78aef1433f2c567bde7fcbf81be3833f8aa60cfff2953dc5",
+    "decompose_report.json": "f7ed852a701b53e14f1b361548d155998b8d291c479dc1f5083944f897def6f3",
+    "detector_path.parquet": "341e2ca354d93912aa285350b7147c5f562ae5567bbadf711dd62f259de44124",
+    "detector_runs.parquet": "494b184bff280484b98e67a3e01b1e8f9c859d74d897f2dc1c2571bf24adc1ee",
+    "freeze_report.json": "e0a184bf17715c457fab6aaa25df734b4b78c16b9072cdc1dba211fd9dd1c8b1",
+    "multiplicity_report.json": "38836b250aa442e07b2795f527c9033cd5534db3c191a6a495a4aee4da561108",
+    "orbit_report.json": "f3028473980cefa4887da279c846dfe50e3be47b161fc3c2ac6e1a5188605d6a",
+    "permutation_cells.parquet": "f0f691d3180fa6545dbb716de3a75a7bb03d02e4f2491696ac06feb8943d2654",
+    "permutation_report.json": "65fde8405b21db1485de4e2000813221a3a2b05623fd216910cda436a752a200",
+    "pvalue_report.json": "50f97a41511790b530665d3c89cd1ad6b5ac7a169f7bb789d8c44409bd36045a",
+    "q2_config.json": "bf75b2f596f24fc632ad8f18d0d3111ee7990a851208ed04ddcb77fedb81c2e5",
+    "q2_summary.json": "8d243dfe2caac1e4c76a120b090b52ba49f073699e936bb212a1ab483cccf274",
+    "trade_attribution.parquet": "5dc5612d470874453d622f7f89106c2f965dd4aaa8c8a531227b594d98a1b841",
+    "wallet_window_tests.parquet": "5c6aac92a66f03895214a4b255fb33ed9fea9d54851dfba508a0857694a1624d",
+    "wallet_windows.parquet": "2449679415f583e94e553557e8ff829ff689cec59899e6d3407188f1433dfacf",
+    "window_membership.parquet": "d11b3cbf6056b01f1fcc7799248208a60e1287f66c1bbd84aed8da078357f77f"
+  },
+  "evaluation_outputs": {},
+  "environment": {
+    "python": "3.11.15",
+    "numpy": "2.4.6"
+  },
+  "version_control": "not consulted; the per-file working-tree digests below are the provenance record for this version",
+  "self_reference": "q2_hashes.json is the only file of this directory it does not hash, because it cannot hash itself",
+  "ground_truth": "no file under data/attrib/ carries ground truth; the simulated evaluation is written to results/q2/",
+  "gate_10_failures": []
+}

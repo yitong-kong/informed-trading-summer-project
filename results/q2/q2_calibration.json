@@ -1,0 +1,106 @@
+{
+  "studies": 61,
+  "quantile": 0.05,
+  "quantile_method": "numpy linear interpolation over the per-study minima",
+  "monte_carlo_grid_floor": 5e-07,
+  "unit": "one study is one window; a study errs if any background confirmatory pair is rejected",
+  "transferability_assumption": "the level-2 replicas bootstrap one control contract (Nov-30). Carrying t_star to another contract assumes the size persistence that breaks exchangeability is comparable there. That is an assumption, not a theorem, and it is the reason the magnitude leg reports a review queue rather than findings",
+  "legs": {
+    "mag": {
+      "nominal_study_wise_error": 0.025,
+      "empirical_study_wise_error": 0.3279,
+      "measured_over_nominal": 13.11,
+      "nominal_holm_is_valid": false,
+      "validity_rule": "measured study-wise error within a factor of two of nominal; the factor is stated rather than implied",
+      "studies_with_a_background_rejection": 20,
+      "background_pairs": 4153,
+      "t_star": 5e-07,
+      "t_star_censored": true,
+      "studies_at_grid_floor": 4,
+      "t_star_note": "censored: 4 of 61 studies reach a background minimum at the Monte Carlo grid floor 5e-07, so the 5% quantile lands on the floor and the true quantile is at or below it. B = 1,999,999 cannot resolve it. t_star is therefore a lower bound on how strict the threshold would have to be, not a calibrated 5% level, and a finding admitted by it is a finding whose p could not be pushed any lower by this design",
+      "by_level": {
+        "L0": {
+          "studies": 18,
+          "studies_with_a_background_rejection": 0,
+          "empirical_study_wise_error": 0.0,
+          "nominal_study_wise_error": 0.025,
+          "t_star": 0.00058835,
+          "studies_at_grid_floor": 0
+        },
+        "L1": {
+          "studies": 22,
+          "studies_with_a_background_rejection": 1,
+          "empirical_study_wise_error": 0.0455,
+          "nominal_study_wise_error": 0.025,
+          "t_star": 0.003612975,
+          "studies_at_grid_floor": 0
+        },
+        "L2": {
+          "studies": 21,
+          "studies_with_a_background_rejection": 19,
+          "empirical_study_wise_error": 0.9048,
+          "nominal_study_wise_error": 0.025,
+          "t_star": 5e-07,
+          "studies_at_grid_floor": 4
+        }
+      }
+    },
+    "dir": {
+      "nominal_study_wise_error": 0.025,
+      "empirical_study_wise_error": 0.0164,
+      "measured_over_nominal": 0.66,
+      "nominal_holm_is_valid": true,
+      "validity_rule": "measured study-wise error within a factor of two of nominal; the factor is stated rather than implied",
+      "studies_with_a_background_rejection": 1,
+      "background_pairs": 4153,
+      "t_star": 0.00211,
+      "t_star_censored": false,
+      "studies_at_grid_floor": 0,
+      "t_star_note": "uncensored: the 5% quantile of the per-study background minima sits above the Monte Carlo grid floor and is measured, not bounded",
+      "by_level": {
+        "L0": {
+          "studies": 18,
+          "studies_with_a_background_rejection": 0,
+          "empirical_study_wise_error": 0.0,
+          "nominal_study_wise_error": 0.025,
+          "t_star": 0.026383875,
+          "studies_at_grid_floor": 0
+        },
+        "L1": {
+          "studies": 22,
+          "studies_with_a_background_rejection": 0,
+          "empirical_study_wise_error": 0.0,
+          "nominal_study_wise_error": 0.025,
+          "t_star": 0.02067615,
+          "studies_at_grid_floor": 0
+        },
+        "L2": {
+          "studies": 21,
+          "studies_with_a_background_rejection": 1,
+          "empirical_study_wise_error": 0.0476,
+          "nominal_study_wise_error": 0.025,
+          "t_star": 0.0005745,
+          "studies_at_grid_floor": 0
+        }
+      }
+    }
+  },
+  "applied": {
+    "leg": "mag",
+    "t_star": 5e-07,
+    "censored": true,
+    "rule": "a mag-leg Holm rejection is reported as a finding only when its raw p is at or below t_star; the rest form the review queue. The dir leg is reported on its nominal Holm, because its measured error matches it",
+    "reporting_constraint": "t_star is censored at the grid floor, so the threshold admits only pairs whose p-value is the smallest this design can represent. That is a defensible fallback and it is not a 5% level: the paper must say the magnitude leg has no measurable calibrated threshold at B = 1,999,999, not that its findings clear one",
+    "frozen_before_real_results": true
+  },
+  "leg_agreement": {
+    "scope": "sim",
+    "pairs": 4319,
+    "both": 91,
+    "mag_only": 65,
+    "dir_only": 37,
+    "neither": 4126,
+    "union": 193,
+    "note": "the legs overlap little by construction: one reads rank position, the other trade counts, and the paper reports them apart rather than as one set"
+  }
+}

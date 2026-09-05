@@ -1,0 +1,39 @@
+{
+  "track": "real",
+  "freeze_build_id": "803a18ccd31d67e0",
+  "seed_base": 2026081601,
+  "batch_size": 512,
+  "cell_definition": [
+    "bucket_index",
+    "profile"
+  ],
+  "stratify_by_side": false,
+  "cells": {
+    "total": 222,
+    "movable": 221,
+    "single_wallet": 1,
+    "distinct_seeds": 222,
+    "largest": 95
+  },
+  "multiplicity_failures": [],
+  "engine_self_test": {
+    "enumerated_window": {
+      "slots": 7,
+      "cells": 2,
+      "arrangements": 36
+    },
+    "frozen_wallet_window": {
+      "slots": 4,
+      "cells": 2,
+      "wallets_with_no_movable_slot": 1
+    }
+  },
+  "fixed_slots": {
+    "window_share_max": 0.0002564102564102564,
+    "low_power_windows": 0,
+    "pairs_with_no_movable_slots": 0
+  },
+  "outputs": {
+    "permutation_cells.parquet": "f0f691d3180fa6545dbb716de3a75a7bb03d02e4f2491696ac06feb8943d2654"
+  }
+}

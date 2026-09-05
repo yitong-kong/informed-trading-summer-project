@@ -1,0 +1,630 @@
+{
+  "study": "Q3 -- cross-contract transfer of an online alarm window",
+  "scope_note": "the real event cluster only; no simulated stream is read, and no module of this study can open a scenario manifest",
+  "standing": "exploratory. Its family-wise error claim covers its own family only, it is reported as a third question beside Q1 and Q2, and no Q3 result may be used to change a Q1 threshold, channel or bucket size, or a Q2 rule, population, seed or statistic",
+  "config_version": "q3-config-2.1.0",
+  "seed_base": 2026081901,
+  "draws": 1999999,
+  "p_denominator": 2000000,
+  "workers": 12,
+  "numpy_version": "2.4.6",
+  "windows": {
+    "count": 17,
+    "transferred": 9,
+    "placebo": 8,
+    "trades": 19100,
+    "pairs": 9176,
+    "eligible_pairs": 1292,
+    "self_windows": 2,
+    "with_secondary_arm": 6,
+    "detail": [
+      {
+        "q3_window_id": "q3|placebo|real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|imbalance|K100|windowed_glr|>real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|K50|b39-47",
+        "role": "placebo",
+        "controls_window_id": "q3|transfer|real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|imbalance|K100|windowed_glr|>real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|K50|b53-61",
+        "source_question": "Maduro out by March 31, 2026?",
+        "source_method": "windowed_glr",
+        "source_direction": 1,
+        "target_question": "Maduro out by December 31, 2026?",
+        "target_bucket_size": 50,
+        "bucket_span": [
+          39,
+          47
+        ],
+        "n_trades": 450,
+        "n_wallets": 225,
+        "n_pairs_ge3": 29,
+        "is_self_window": false,
+        "baseline_available": false,
+        "baseline_unavailable_reason": "a placebo window carries no secondary arm",
+        "w_window": null,
+        "membership_sha256": "311c124b281fc5a97546a2e83f822997f78880aecb719c1d9f942ef7a9076ff9"
+      },
+      {
+        "q3_window_id": "q3|placebo|real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|imbalance|K100|windowed_glr|>real|0x580adc1327de9bf7c179ef5aaffa3377bb5cb252b7d6390b027172d43fd6f993|K100|b4-43",
+        "role": "placebo",
+        "controls_window_id": "q3|transfer|real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|imbalance|K100|windowed_glr|>real|0x580adc1327de9bf7c179ef5aaffa3377bb5cb252b7d6390b027172d43fd6f993|K100|b46-85",
+        "source_question": "Maduro out by March 31, 2026?",
+        "source_method": "windowed_glr",
+        "source_direction": 1,
+        "target_question": "Maduro out by January 31, 2026?",
+        "target_bucket_size": 100,
+        "bucket_span": [
+          4,
+          43
+        ],
+        "n_trades": 4000,
+        "n_wallets": 1977,
+        "n_pairs_ge3": 225,
+        "is_self_window": false,
+        "baseline_available": false,
+        "baseline_unavailable_reason": "a placebo window carries no secondary arm",
+        "w_window": null,
+        "membership_sha256": "6b9485025344e84c87fc6eb7e064f72bf08b6b58fd321804eb046eab33412df4"
+      },
+      {
+        "q3_window_id": "q3|placebo|real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|imbalance|K50|windowed_glr|>real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|K100|b72-75",
+        "role": "placebo",
+        "controls_window_id": "q3|transfer|real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|imbalance|K50|windowed_glr|>real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|K100|b76-79",
+        "source_question": "Maduro out by December 31, 2026?",
+        "source_method": "windowed_glr",
+        "source_direction": 1,
+        "target_question": "Maduro out by March 31, 2026?",
+        "target_bucket_size": 100,
+        "bucket_span": [
+          72,
+          75
+        ],
+        "n_trades": 400,
+        "n_wallets": 148,
+        "n_pairs_ge3": 11,
+        "is_self_window": false,
+        "baseline_available": false,
+        "baseline_unavailable_reason": "a placebo window carries no secondary arm",
+        "w_window": null,
+        "membership_sha256": "c6c21e2753d1ea38295e5914dbf88b5d9b0d92afe073b110a0e20671d5e619c4"
+      },
+      {
+        "q3_window_id": "q3|placebo|real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|imbalance|K50|windowed_glr|>real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|K50|b41-47",
+        "role": "placebo",
+        "controls_window_id": "q3|transfer|real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|imbalance|K50|windowed_glr|>real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|K50|b48-54",
+        "source_question": "Maduro out by December 31, 2026?",
+        "source_method": "windowed_glr",
+        "source_direction": 1,
+        "target_question": "Maduro out by December 31, 2026?",
+        "target_bucket_size": 50,
+        "bucket_span": [
+          41,
+          47
+        ],
+        "n_trades": 350,
+        "n_wallets": 179,
+        "n_pairs_ge3": 29,
+        "is_self_window": true,
+        "baseline_available": false,
+        "baseline_unavailable_reason": "a placebo window carries no secondary arm",
+        "w_window": null,
+        "membership_sha256": "3099fd7e16009ad0143fa2334ee626c6c420ecaad16fb3822d04393204f908c5"
+      },
+      {
+        "q3_window_id": "q3|placebo|real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|imbalance|K50|windowed_glr|>real|0x580adc1327de9bf7c179ef5aaffa3377bb5cb252b7d6390b027172d43fd6f993|K100|b34-43",
+        "role": "placebo",
+        "controls_window_id": "q3|transfer|real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|imbalance|K50|windowed_glr|>real|0x580adc1327de9bf7c179ef5aaffa3377bb5cb252b7d6390b027172d43fd6f993|K100|b44-53",
+        "source_question": "Maduro out by December 31, 2026?",
+        "source_method": "windowed_glr",
+        "source_direction": 1,
+        "target_question": "Maduro out by January 31, 2026?",
+        "target_bucket_size": 100,
+        "bucket_span": [
+          34,
+          43
+        ],
+        "n_trades": 1000,
+        "n_wallets": 535,
+        "n_pairs_ge3": 49,
+        "is_self_window": false,
+        "baseline_available": false,
+        "baseline_unavailable_reason": "a placebo window carries no secondary arm",
+        "w_window": null,
+        "membership_sha256": "f324bcb0eaa26694faec190ff81fa59ef8d664b9cc7fdc5d9ac0903f5ac50484"
+      },
+      {
+        "q3_window_id": "q3|placebo|real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|imbalance|K50|windowed_glr|>real|0xa374f4c047b99a8e2950783b7306c2a8c313fb88d98ae2c1ea0efb58231c3250|K100|b3-5",
+        "role": "placebo",
+        "controls_window_id": "q3|transfer|real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|imbalance|K50|windowed_glr|>real|0xa374f4c047b99a8e2950783b7306c2a8c313fb88d98ae2c1ea0efb58231c3250|K100|b6-8",
+        "source_question": "Maduro out by December 31, 2026?",
+        "source_method": "windowed_glr",
+        "source_direction": 1,
+        "target_question": "Maduro out by February 28, 2026?",
+        "target_bucket_size": 100,
+        "bucket_span": [
+          3,
+          5
+        ],
+        "n_trades": 300,
+        "n_wallets": 212,
+        "n_pairs_ge3": 12,
+        "is_self_window": false,
+        "baseline_available": false,
+        "baseline_unavailable_reason": "a placebo window carries no secondary arm",
+        "w_window": null,
+        "membership_sha256": "dd3899261a3727b2c89db40b9722a93d7512d0ca3c2a754eeffeb311c6ea87ce"
+      },
+      {
+        "q3_window_id": "q3|placebo|real|0xa953bea944d7264285c0a2cc1f92809a7d9db78138b1c3de9cc23d8917f14d6a|imbalance|K100|cusum|>real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|K100|b9-14",
+        "role": "placebo",
+        "controls_window_id": "q3|transfer|real|0xa953bea944d7264285c0a2cc1f92809a7d9db78138b1c3de9cc23d8917f14d6a|imbalance|K100|cusum|>real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|K100|b15-20",
+        "source_question": "Maduro out by November 30, 2025?",
+        "source_method": "cusum",
+        "source_direction": -1,
+        "target_question": "Maduro out by March 31, 2026?",
+        "target_bucket_size": 100,
+        "bucket_span": [
+          9,
+          14
+        ],
+        "n_trades": 600,
+        "n_wallets": 364,
+        "n_pairs_ge3": 35,
+        "is_self_window": false,
+        "baseline_available": false,
+        "baseline_unavailable_reason": "a placebo window carries no secondary arm",
+        "w_window": null,
+        "membership_sha256": "9a7987deed5c1fe68749bf8c4d430ed924f57074c8b7ae56a49aa7fd05e3850b"
+      },
+      {
+        "q3_window_id": "q3|placebo|real|0xa953bea944d7264285c0a2cc1f92809a7d9db78138b1c3de9cc23d8917f14d6a|imbalance|K100|cusum|>real|0xafc235557ace53ff0b0d2e93392314a7c3f3daab26a79050e985c11282f66df7|K100|b155-175",
+        "role": "placebo",
+        "controls_window_id": "q3|transfer|real|0xa953bea944d7264285c0a2cc1f92809a7d9db78138b1c3de9cc23d8917f14d6a|imbalance|K100|cusum|>real|0xafc235557ace53ff0b0d2e93392314a7c3f3daab26a79050e985c11282f66df7|K100|b176-196",
+        "source_question": "Maduro out by November 30, 2025?",
+        "source_method": "cusum",
+        "source_direction": -1,
+        "target_question": "Maduro out in 2025?",
+        "target_bucket_size": 100,
+        "bucket_span": [
+          155,
+          175
+        ],
+        "n_trades": 2100,
+        "n_wallets": 980,
+        "n_pairs_ge3": 117,
+        "is_self_window": false,
+        "baseline_available": false,
+        "baseline_unavailable_reason": "a placebo window carries no secondary arm",
+        "w_window": null,
+        "membership_sha256": "9ac1a8a3ffb807f1291c8aa5fad12b785720db67bbc1fdbdabaecf1df92d19b4"
+      },
+      {
+        "q3_window_id": "q3|transfer|real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|imbalance|K100|windowed_glr|>real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|K50|b53-61",
+        "role": "transfer",
+        "controls_window_id": null,
+        "source_question": "Maduro out by March 31, 2026?",
+        "source_method": "windowed_glr",
+        "source_direction": 1,
+        "target_question": "Maduro out by December 31, 2026?",
+        "target_bucket_size": 50,
+        "bucket_span": [
+          53,
+          61
+        ],
+        "n_trades": 450,
+        "n_wallets": 247,
+        "n_pairs_ge3": 43,
+        "is_self_window": false,
+        "baseline_available": true,
+        "baseline_unavailable_reason": null,
+        "w_window": 5.872797408196048,
+        "membership_sha256": "8a9edf3c3a816f18ae9d28297900a306ec0f03401fa8b35db6c1629c0d4be37c"
+      },
+      {
+        "q3_window_id": "q3|transfer|real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|imbalance|K100|windowed_glr|>real|0x580adc1327de9bf7c179ef5aaffa3377bb5cb252b7d6390b027172d43fd6f993|K100|b46-85",
+        "role": "transfer",
+        "controls_window_id": null,
+        "source_question": "Maduro out by March 31, 2026?",
+        "source_method": "windowed_glr",
+        "source_direction": 1,
+        "target_question": "Maduro out by January 31, 2026?",
+        "target_bucket_size": 100,
+        "bucket_span": [
+          46,
+          85
+        ],
+        "n_trades": 4000,
+        "n_wallets": 1396,
+        "n_pairs_ge3": 347,
+        "is_self_window": false,
+        "baseline_available": true,
+        "baseline_unavailable_reason": null,
+        "w_window": -24.492611649537054,
+        "membership_sha256": "5b57be732b2e06a74e88bb82178e2d16baf849496a1575770dbd97f006e3e715"
+      },
+      {
+        "q3_window_id": "q3|transfer|real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|imbalance|K100|windowed_glr|>real|0xa374f4c047b99a8e2950783b7306c2a8c313fb88d98ae2c1ea0efb58231c3250|K100|b7-13",
+        "role": "transfer",
+        "controls_window_id": null,
+        "source_question": "Maduro out by March 31, 2026?",
+        "source_method": "windowed_glr",
+        "source_direction": 1,
+        "target_question": "Maduro out by February 28, 2026?",
+        "target_bucket_size": 100,
+        "bucket_span": [
+          7,
+          13
+        ],
+        "n_trades": 700,
+        "n_wallets": 329,
+        "n_pairs_ge3": 42,
+        "is_self_window": false,
+        "baseline_available": false,
+        "baseline_unavailable_reason": "contract has no clean burn-in and is outside Q1 detection",
+        "w_window": null,
+        "membership_sha256": "df610e47f2dd063f0ccbbb1862886a48fcb50f2179012d7b68822af23a726f98"
+      },
+      {
+        "q3_window_id": "q3|transfer|real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|imbalance|K50|windowed_glr|>real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|K100|b76-79",
+        "role": "transfer",
+        "controls_window_id": null,
+        "source_question": "Maduro out by December 31, 2026?",
+        "source_method": "windowed_glr",
+        "source_direction": 1,
+        "target_question": "Maduro out by March 31, 2026?",
+        "target_bucket_size": 100,
+        "bucket_span": [
+          76,
+          79
+        ],
+        "n_trades": 400,
+        "n_wallets": 174,
+        "n_pairs_ge3": 24,
+        "is_self_window": false,
+        "baseline_available": true,
+        "baseline_unavailable_reason": null,
+        "w_window": 3.110759611523572,
+        "membership_sha256": "da74ebb9a11a4899193808c4eafa5e6dece72844134335258d281968193e73c8"
+      },
+      {
+        "q3_window_id": "q3|transfer|real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|imbalance|K50|windowed_glr|>real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|K50|b48-54",
+        "role": "transfer",
+        "controls_window_id": null,
+        "source_question": "Maduro out by December 31, 2026?",
+        "source_method": "windowed_glr",
+        "source_direction": 1,
+        "target_question": "Maduro out by December 31, 2026?",
+        "target_bucket_size": 50,
+        "bucket_span": [
+          48,
+          54
+        ],
+        "n_trades": 350,
+        "n_wallets": 177,
+        "n_pairs_ge3": 39,
+        "is_self_window": true,
+        "baseline_available": true,
+        "baseline_unavailable_reason": null,
+        "w_window": 5.441141894801358,
+        "membership_sha256": "807939fb8a2b109efda9550b0c59636c9f4f947a95b69fbd0299ba6d847a6791"
+      },
+      {
+        "q3_window_id": "q3|transfer|real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|imbalance|K50|windowed_glr|>real|0x580adc1327de9bf7c179ef5aaffa3377bb5cb252b7d6390b027172d43fd6f993|K100|b44-53",
+        "role": "transfer",
+        "controls_window_id": null,
+        "source_question": "Maduro out by December 31, 2026?",
+        "source_method": "windowed_glr",
+        "source_direction": 1,
+        "target_question": "Maduro out by January 31, 2026?",
+        "target_bucket_size": 100,
+        "bucket_span": [
+          44,
+          53
+        ],
+        "n_trades": 1000,
+        "n_wallets": 408,
+        "n_pairs_ge3": 88,
+        "is_self_window": false,
+        "baseline_available": true,
+        "baseline_unavailable_reason": null,
+        "w_window": 1.4621584174845847,
+        "membership_sha256": "76d5d1250442d4b11850973863abf35bc7f915f73b94fe48a86667d554525d7d"
+      },
+      {
+        "q3_window_id": "q3|transfer|real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|imbalance|K50|windowed_glr|>real|0xa374f4c047b99a8e2950783b7306c2a8c313fb88d98ae2c1ea0efb58231c3250|K100|b6-8",
+        "role": "transfer",
+        "controls_window_id": null,
+        "source_question": "Maduro out by December 31, 2026?",
+        "source_method": "windowed_glr",
+        "source_direction": 1,
+        "target_question": "Maduro out by February 28, 2026?",
+        "target_bucket_size": 100,
+        "bucket_span": [
+          6,
+          8
+        ],
+        "n_trades": 300,
+        "n_wallets": 181,
+        "n_pairs_ge3": 21,
+        "is_self_window": false,
+        "baseline_available": false,
+        "baseline_unavailable_reason": "contract has no clean burn-in and is outside Q1 detection",
+        "w_window": null,
+        "membership_sha256": "a6d7d7ff998be7af36e62954bb9eb24447cad326ab2bfeb2f7f8b1cde4bdd11a"
+      },
+      {
+        "q3_window_id": "q3|transfer|real|0xa953bea944d7264285c0a2cc1f92809a7d9db78138b1c3de9cc23d8917f14d6a|imbalance|K100|cusum|>real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|K100|b15-20",
+        "role": "transfer",
+        "controls_window_id": null,
+        "source_question": "Maduro out by November 30, 2025?",
+        "source_method": "cusum",
+        "source_direction": -1,
+        "target_question": "Maduro out by March 31, 2026?",
+        "target_bucket_size": 100,
+        "bucket_span": [
+          15,
+          20
+        ],
+        "n_trades": 600,
+        "n_wallets": 390,
+        "n_pairs_ge3": 30,
+        "is_self_window": false,
+        "baseline_available": false,
+        "baseline_unavailable_reason": "window starts at bucket 15, inside the 20-bucket baseline of cusum",
+        "w_window": null,
+        "membership_sha256": "54a616f43c5c84ceeb6b5dbe480473e8bc1731df5f51b666b4909e2aeb187522"
+      },
+      {
+        "q3_window_id": "q3|transfer|real|0xa953bea944d7264285c0a2cc1f92809a7d9db78138b1c3de9cc23d8917f14d6a|imbalance|K100|cusum|>real|0xafc235557ace53ff0b0d2e93392314a7c3f3daab26a79050e985c11282f66df7|K100|b176-196",
+        "role": "transfer",
+        "controls_window_id": null,
+        "source_question": "Maduro out by November 30, 2025?",
+        "source_method": "cusum",
+        "source_direction": -1,
+        "target_question": "Maduro out in 2025?",
+        "target_bucket_size": 100,
+        "bucket_span": [
+          176,
+          196
+        ],
+        "n_trades": 2100,
+        "n_wallets": 1254,
+        "n_pairs_ge3": 151,
+        "is_self_window": false,
+        "baseline_available": true,
+        "baseline_unavailable_reason": null,
+        "w_window": 19.24213046783907,
+        "membership_sha256": "e9d1b994536ebaca2a6a854e5f5604b27c4ad154e5e039a750049d8f821bad61"
+      }
+    ]
+  },
+  "families": {
+    "primary": {
+      "alpha": 0.05,
+      "m": 785,
+      "windows": 9,
+      "family_size_range": [
+        21,
+        347
+      ],
+      "rejections": 11,
+      "windows_with_a_rejection": 8,
+      "min_adjusted_p": 2.1e-05,
+      "orbit_reachable": 745
+    },
+    "mag": {
+      "alpha": 0.025,
+      "m": 785,
+      "windows": 9,
+      "family_size_range": [
+        21,
+        347
+      ],
+      "rejections": 17,
+      "windows_with_a_rejection": 8,
+      "min_adjusted_p": 1.2e-05,
+      "orbit_reachable": 734
+    },
+    "dir": {
+      "alpha": 0.025,
+      "m": 785,
+      "windows": 9,
+      "family_size_range": [
+        21,
+        347
+      ],
+      "rejections": 10,
+      "windows_with_a_rejection": 5,
+      "min_adjusted_p": 0.0001735,
+      "orbit_reachable": 734
+    },
+    "no_leak": {
+      "alpha": 0.05,
+      "m": 534,
+      "windows": 8,
+      "family_size_range": [
+        13,
+        261
+      ],
+      "rejections": 6,
+      "windows_with_a_rejection": 5,
+      "min_adjusted_p": 6.5e-06,
+      "orbit_reachable": 508
+    },
+    "mirror": {
+      "alpha": 0.05,
+      "m": 785,
+      "windows": 9,
+      "family_size_range": [
+        21,
+        347
+      ],
+      "rejections": 10,
+      "windows_with_a_rejection": 8,
+      "min_adjusted_p": 0.0001735,
+      "orbit_reachable": 745
+    },
+    "secondary_dnc": {
+      "alpha": 0.05,
+      "m": 692,
+      "windows": 6,
+      "family_size_range": [
+        24,
+        347
+      ],
+      "rejections": 7,
+      "windows_with_a_rejection": 4,
+      "min_adjusted_p": 2.4e-05,
+      "orbit_reachable": 653
+    },
+    "placebo": {
+      "alpha": 0.05,
+      "m": 507,
+      "windows": 8,
+      "family_size_range": [
+        11,
+        225
+      ],
+      "rejections": 6,
+      "windows_with_a_rejection": 3,
+      "min_adjusted_p": 0.0003375,
+      "orbit_reachable": 473
+    }
+  },
+  "bh_screen": {
+    "m": 4556,
+    "windows": 9,
+    "q": 0.1,
+    "screened": 8,
+    "caveat": "a review screen only: the pairs share slots, so neither independence nor PRDS is established and no false discovery rate is claimed"
+  },
+  "leakage": {
+    "pairs_crossing_the_source_window": 1169,
+    "eligible_crossing": 353,
+    "rule": "the whole Holm family is run a second time with every wallet that also traded inside the source window removed, and both results are reported; a pair significant only in the first is a lead, not a finding"
+  },
+  "both_tails": {
+    "pairs": 0,
+    "note": "a pair extreme in both tails shows concentration without direction and is descriptive only"
+  },
+  "secondary_sensitivity": {
+    "headline_family": "primary",
+    "secondary_only_pairs": 1,
+    "note": "the DNC family runs over a different set of pairs -- only the windows whose target has a clean burn-in -- so it is a sensitivity and never a second headline; where the two disagree, the disagreement is the result"
+  },
+  "p_raw_e": {
+    "min": 5e-07,
+    "median": 0.5110155000000001,
+    "at_grid_floor": 2,
+    "exactly_one": 240
+  },
+  "placebo_contrast": {
+    "by_role": {
+      "transfer": {
+        "windows": 9,
+        "pairs": 4556,
+        "eligible_pairs": 785,
+        "rejections": 11,
+        "rejection_rate_per_eligible_pair": 0.014012738853503185,
+        "windows_with_a_rejection": 8,
+        "min_p_raw_e": 5e-07
+      },
+      "placebo": {
+        "windows": 8,
+        "pairs": 4620,
+        "eligible_pairs": 507,
+        "rejections": 6,
+        "rejection_rate_per_eligible_pair": 0.011834319526627219,
+        "windows_with_a_rejection": 3,
+        "min_p_raw_e": 1.5e-06
+      }
+    },
+    "transferred_windows_without_a_placebo": [
+      "q3|transfer|real|0x18d8c59309811ce5618ea941f9bde2a96afa5d876a69c42fba2da4bcc56d3c5e|imbalance|K100|windowed_glr|>real|0xa374f4c047b99a8e2950783b7306c2a8c313fb88d98ae2c1ea0efb58231c3250|K100|b7-13"
+    ],
+    "rule": "for each transferred window [s, e] of length L on contract C, the placebo is the nearest same-length span on C that lies inside C's bucket range and intersects no transferred window and no Q2 primary span on C. Candidates are walked outward from the window one bucket at a time on both sides and the first that qualifies is taken, the earlier side winning an exact tie; if the contract has no room at all the window has no placebo and that is recorded. Two placebos may overlap each other, because two transferred windows on one contract already can",
+    "reading": "a contrast, not a false-alarm rate. These are real contracts with no ground truth, so a rejection inside a placebo window is not provably a false positive -- the cluster may hold informed trading outside the alarm windows, which is the premise of the project. What the contrast can say is whether the transferred windows are distinguishable from unselected ones at all; if they are not, the selection is doing no work",
+    "families": "separate Holm families at the same alpha; never merged"
+  },
+  "lead_lag": {
+    "anchor_utc": 1762069157.0,
+    "anchor_question": "Maduro out in 2025?",
+    "alarms": [
+      {
+        "question": "Maduro out in 2025?",
+        "method": "cusum",
+        "bucket_size": 100,
+        "direction": -1,
+        "alarm_available_utc": 1762069157.0,
+        "seconds_after_anchor": 0.0,
+        "opened_a_q3_window": false
+      },
+      {
+        "question": "Maduro out by November 30, 2025?",
+        "method": "cusum",
+        "bucket_size": 100,
+        "direction": -1,
+        "alarm_available_utc": 1764417647.0,
+        "seconds_after_anchor": 2348490.0,
+        "opened_a_q3_window": true
+      },
+      {
+        "question": "Maduro out by December 31, 2026?",
+        "method": "windowed_glr",
+        "bucket_size": 50,
+        "direction": 1,
+        "alarm_available_utc": 1767422955.0,
+        "seconds_after_anchor": 5353798.0,
+        "opened_a_q3_window": true
+      },
+      {
+        "question": "Maduro out by March 31, 2026?",
+        "method": "windowed_glr",
+        "bucket_size": 100,
+        "direction": 1,
+        "alarm_available_utc": 1767433213.0,
+        "seconds_after_anchor": 5364056.0,
+        "opened_a_q3_window": true
+      }
+    ],
+    "note": "descriptive only: the contracts open at different times and differ greatly in depth, so an ordering of alarm instants is not a claim that one market led another"
+  },
+  "scope": {
+    "supported_claim": "inside the interval another contract of the cluster alarmed on, this wallet's directional exposure on this contract is unusual against a label permutation, and is worth review",
+    "unsupported_claim": "informed, insider, illegal, or a probability of any of those; and not that Q3 repairs Q1 -- Q3 conditions on a different event and carries its own false-alarm argument",
+    "attribution": "active order owner only; the passive leg of every fill is structurally invisible to this design"
+  },
+  "direction_assumption": "transferring d assumes the cluster's contracts share an informed direction over the interval. That is a domain assumption about these questions, not a statistical result, and the mirror statistic is reported so a reader can see both tails",
+  "not_established": {
+    "exchangeability": "the permutation null treats the wallets inside a cell as exchangeable. The cell stratifies on the bucket and on a wallet's pre-window trade sizes, so a wallet with no pre-window history is pooled with every other such wallet however large it trades inside the window. Where trade size is persistent at the wallet level the assumption is approximate and the family-wise error rate is approximate with it",
+    "calibration": "this version ships no measurement of how approximate. That is the main reason the study is exploratory rather than confirmatory, and it is why the placebo contrast is reported beside every result",
+    "scope": "the real event cluster only; no simulated stream is read, and no module of this study can open a scenario manifest"
+  },
+  "gate_7_failures": [],
+  "doj_gate": {
+    "eligible": true,
+    "n_trades": 4,
+    "rank_e": 1,
+    "m_primary": 88,
+    "m_mag": 88,
+    "m_dir": 88,
+    "holm_rank_primary": 1,
+    "holm_rank_mag": 3,
+    "reject_primary": true,
+    "reject_mag": true,
+    "reject_dir": false,
+    "active_wallet": "0x31a56e9e690c621ed21de08cb559e9524cdb8ed9",
+    "q3_window_id": "q3|transfer|real|0x405d8bce742fa300a306df3bede02ef29a5d45f8e788a8a4c056e17badf5a56a|imbalance|K50|windowed_glr|>real|0x580adc1327de9bf7c179ef5aaffa3377bb5cb252b7d6390b027172d43fd6f993|K100|b44-53",
+    "p_raw_e": 0.0001425,
+    "p_raw_mag": 0.0001425,
+    "p_raw_dir": 0.020835,
+    "p_holm_primary": 0.012539999999999999,
+    "p_holm_mag": 0.012255,
+    "p_holm_dir": 1.0
+  },
+  "frozen_e_regression": {
+    "status": "bit_equal",
+    "rows": 9176,
+    "vector_sha256": "e74811df3515dd23832f556be2a3f46f5cba724d5205a85e2bb865eccd5f508d"
+  },
+  "q2_products_changed": {
+    "real": [],
+    "sim": []
+  }
+}

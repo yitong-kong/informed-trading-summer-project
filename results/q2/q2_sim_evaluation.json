@@ -1,0 +1,296 @@
+{
+  "gate_5": {
+    "profile_reads_only_pre_onset_history": true,
+    "cell_definition": [
+      "bucket_index",
+      "profile"
+    ],
+    "side_is_not_a_stratum": true,
+    "assertion_a_label_rename": true,
+    "assertion_b_truth_unreachable": true,
+    "data_attrib_is_truth_free": true
+  },
+  "instances": {
+    "total": 172,
+    "directional_modes": 166,
+    "negative_control": 6,
+    "by_bin": {
+      "1-2": 6,
+      "3-6": 11,
+      "7-15": 8,
+      "16-40": 19,
+      "41-100": 50,
+      "101+": 72
+    }
+  },
+  "recall": {
+    "mag_rejected": 108,
+    "dir_rejected": 127,
+    "union_rejected": 145,
+    "magnitude_top10": 158,
+    "eligible": 160,
+    "instances": 166,
+    "denominator": "confirmatory instances; the ineligible ones hold one or two slots and no headline test reaches them"
+  },
+  "calibration": {
+    "studies": 61,
+    "quantile": 0.05,
+    "quantile_method": "numpy linear interpolation over the per-study minima",
+    "monte_carlo_grid_floor": 5e-07,
+    "unit": "one study is one window; a study errs if any background confirmatory pair is rejected",
+    "transferability_assumption": "the level-2 replicas bootstrap one control contract (Nov-30). Carrying t_star to another contract assumes the size persistence that breaks exchangeability is comparable there. That is an assumption, not a theorem, and it is the reason the magnitude leg reports a review queue rather than findings",
+    "legs": {
+      "mag": {
+        "nominal_study_wise_error": 0.025,
+        "empirical_study_wise_error": 0.3279,
+        "measured_over_nominal": 13.11,
+        "nominal_holm_is_valid": false,
+        "validity_rule": "measured study-wise error within a factor of two of nominal; the factor is stated rather than implied",
+        "studies_with_a_background_rejection": 20,
+        "background_pairs": 4153,
+        "t_star": 5e-07,
+        "t_star_censored": true,
+        "studies_at_grid_floor": 4,
+        "t_star_note": "censored: 4 of 61 studies reach a background minimum at the Monte Carlo grid floor 5e-07, so the 5% quantile lands on the floor and the true quantile is at or below it. B = 1,999,999 cannot resolve it. t_star is therefore a lower bound on how strict the threshold would have to be, not a calibrated 5% level, and a finding admitted by it is a finding whose p could not be pushed any lower by this design",
+        "by_level": {
+          "L0": {
+            "studies": 18,
+            "studies_with_a_background_rejection": 0,
+            "empirical_study_wise_error": 0.0,
+            "nominal_study_wise_error": 0.025,
+            "t_star": 0.00058835,
+            "studies_at_grid_floor": 0
+          },
+          "L1": {
+            "studies": 22,
+            "studies_with_a_background_rejection": 1,
+            "empirical_study_wise_error": 0.0455,
+            "nominal_study_wise_error": 0.025,
+            "t_star": 0.003612975,
+            "studies_at_grid_floor": 0
+          },
+          "L2": {
+            "studies": 21,
+            "studies_with_a_background_rejection": 19,
+            "empirical_study_wise_error": 0.9048,
+            "nominal_study_wise_error": 0.025,
+            "t_star": 5e-07,
+            "studies_at_grid_floor": 4
+          }
+        }
+      },
+      "dir": {
+        "nominal_study_wise_error": 0.025,
+        "empirical_study_wise_error": 0.0164,
+        "measured_over_nominal": 0.66,
+        "nominal_holm_is_valid": true,
+        "validity_rule": "measured study-wise error within a factor of two of nominal; the factor is stated rather than implied",
+        "studies_with_a_background_rejection": 1,
+        "background_pairs": 4153,
+        "t_star": 0.00211,
+        "t_star_censored": false,
+        "studies_at_grid_floor": 0,
+        "t_star_note": "uncensored: the 5% quantile of the per-study background minima sits above the Monte Carlo grid floor and is measured, not bounded",
+        "by_level": {
+          "L0": {
+            "studies": 18,
+            "studies_with_a_background_rejection": 0,
+            "empirical_study_wise_error": 0.0,
+            "nominal_study_wise_error": 0.025,
+            "t_star": 0.026383875,
+            "studies_at_grid_floor": 0
+          },
+          "L1": {
+            "studies": 22,
+            "studies_with_a_background_rejection": 0,
+            "empirical_study_wise_error": 0.0,
+            "nominal_study_wise_error": 0.025,
+            "t_star": 0.02067615,
+            "studies_at_grid_floor": 0
+          },
+          "L2": {
+            "studies": 21,
+            "studies_with_a_background_rejection": 1,
+            "empirical_study_wise_error": 0.0476,
+            "nominal_study_wise_error": 0.025,
+            "t_star": 0.0005745,
+            "studies_at_grid_floor": 0
+          }
+        }
+      }
+    },
+    "applied": {
+      "leg": "mag",
+      "t_star": 5e-07,
+      "censored": true,
+      "rule": "a mag-leg Holm rejection is reported as a finding only when its raw p is at or below t_star; the rest form the review queue. The dir leg is reported on its nominal Holm, because its measured error matches it",
+      "reporting_constraint": "t_star is censored at the grid floor, so the threshold admits only pairs whose p-value is the smallest this design can represent. That is a defensible fallback and it is not a 5% level: the paper must say the magnitude leg has no measurable calibrated threshold at B = 1,999,999, not that its findings clear one",
+      "frozen_before_real_results": true
+    }
+  },
+  "leg_agreement": {
+    "scope": "sim",
+    "pairs": 4319,
+    "both": 91,
+    "mag_only": 65,
+    "dir_only": 37,
+    "neither": 4126,
+    "union": 193,
+    "note": "the legs overlap little by construction: one reads rank position, the other trade counts, and the paper reports them apart rather than as one set"
+  },
+  "gate_checks": {
+    "G5_union_recall": {
+      "value": "145/160",
+      "threshold": "at least 140/160",
+      "passed": true
+    },
+    "G5_negative_control": {
+      "value": "0/6",
+      "threshold": "0 rejections",
+      "passed": true
+    },
+    "G6_direction_leg_l2": {
+      "value": "1/21",
+      "threshold": "at most 3/21 study-wise",
+      "passed": true
+    },
+    "G6_magnitude_leg_l2_reported": {
+      "value": "19/21",
+      "threshold": "reported honestly, whatever it is",
+      "passed": true,
+      "note": "this gate is a disclosure requirement, not a bound: the magnitude leg's background error is a result of the study"
+    }
+  },
+  "top10_group_sizes": {
+    "mag": {
+      "min": 10,
+      "median": 10.0,
+      "max": 15,
+      "windows_above_n": 14,
+      "windows": 61
+    },
+    "dir": {
+      "min": 10,
+      "median": 17.0,
+      "max": 1004,
+      "windows_above_n": 54,
+      "windows": 61
+    },
+    "note": "only the mag leg carries the top-10 recall metric; the other leg's score is too coarse for the tier to mean anything at this roster size, and the max above is the evidence for that"
+  },
+  "episodes": {
+    "canonical_runs": 61,
+    "distinct": 53,
+    "representative_rule": "the group's injection-free stream where it has one, otherwise the first window_id",
+    "duplicate_groups": [
+      {
+        "membership_sha256": "454f226df6cb4fb3ea65873f285bf58ee1a7f8abfa789caef61a85fd2775d5af",
+        "windows": [
+          "L2_additive_trades_s100_no|0x2b5bc1d50424ca1fc4c3b798e7248c1400f1f24987408771c7dffe0a51817d96|imbalance|K100|a72",
+          "L2_additive_trades_s100|0x2b5bc1d50424ca1fc4c3b798e7248c1400f1f24987408771c7dffe0a51817d96|imbalance|K100|a72",
+          "L2_null_s100|0x2b5bc1d50424ca1fc4c3b798e7248c1400f1f24987408771c7dffe0a51817d96|imbalance|K100|a72",
+          "L2_wallet_concentration_only_s100_no|0x2b5bc1d50424ca1fc4c3b798e7248c1400f1f24987408771c7dffe0a51817d96|imbalance|K100|a72",
+          "L2_wallet_concentration_only_s100|0x2b5bc1d50424ca1fc4c3b798e7248c1400f1f24987408771c7dffe0a51817d96|imbalance|K100|a72"
+        ],
+        "identical_payload": true
+      },
+      {
+        "membership_sha256": "497acbbb55119b5111de1909c8e3b43f5e5a0429f47ab6b00b7572e36b3ea357",
+        "windows": [
+          "L1_direction_tilt_same_count_s100_no|0x2b5bc1d50424ca1fc4c3b798e7248c1400f1f24987408771c7dffe0a51817d96|imbalance|K100|a55",
+          "L1_size_tilt_s100_no|0x2b5bc1d50424ca1fc4c3b798e7248c1400f1f24987408771c7dffe0a51817d96|imbalance|K100|a55"
+        ],
+        "identical_payload": false
+      },
+      {
+        "membership_sha256": "507de7d4f4a4246cf9024425c72957de51f0a2fae9c0fdf2072065451384fff1",
+        "windows": [
+          "L0_direction_tilt_same_count_s42|0xcdfb21c6c1ff91a761565a702416da6ec212cddb8d8800160eb686b2eb819333|imbalance|K100|a54",
+          "L0_size_tilt_s42|0xcdfb21c6c1ff91a761565a702416da6ec212cddb8d8800160eb686b2eb819333|imbalance|K100|a54"
+        ],
+        "identical_payload": false
+      },
+      {
+        "membership_sha256": "7a109d084bcbde8059931cd45a8fe74deaea0e01454d21e01f62beb7c8748444",
+        "windows": [
+          "L2_direction_tilt_same_count_s42_no|0xcdfb21c6c1ff91a761565a702416da6ec212cddb8d8800160eb686b2eb819333|imbalance|K100|a68",
+          "L2_size_tilt_s42_no|0xcdfb21c6c1ff91a761565a702416da6ec212cddb8d8800160eb686b2eb819333|imbalance|K100|a68"
+        ],
+        "identical_payload": false
+      },
+      {
+        "membership_sha256": "c935e9a1aa29fd4742aca2d5973cbd33fec9b033f1e26cead50fa688f302c85a",
+        "windows": [
+          "L0_direction_tilt_same_count_s1000_no|0x258979850d2332d91861959ad0ee8bd141a48f78fb3a6c35a20e0834137ec180|imbalance|K100|a47",
+          "L0_size_tilt_s1000_no|0x258979850d2332d91861959ad0ee8bd141a48f78fb3a6c35a20e0834137ec180|imbalance|K100|a47"
+        ],
+        "identical_payload": false
+      }
+    ],
+    "groups_with_identical_payload": 1,
+    "official_scope_per_block": {
+      "recall_by_n_trades_mle": "canonical_run",
+      "recall_by_level_and_mode": "canonical_run",
+      "bin_and_mode_composition": "canonical_run",
+      "negative_control": "canonical_run",
+      "engine_correctness": "canonical_run",
+      "conditional_h0": "episode_dedup"
+    },
+    "recall_dedup": {
+      "instances": 154,
+      "mag_rejected": 99,
+      "dir_rejected": 115,
+      "union_rejected": 133,
+      "magnitude_top10": 146,
+      "eligible": 148
+    }
+  },
+  "assertion_a": {
+    "windows": [
+      {
+        "window_id": "L0_size_tilt_s100|0x2b5bc1d50424ca1fc4c3b798e7248c1400f1f24987408771c7dffe0a51817d96|imbalance|K100|a53",
+        "wallets_renamed": 2373,
+        "slots": 300
+      },
+      {
+        "window_id": "L1_size_tilt_s100|0x2b5bc1d50424ca1fc4c3b798e7248c1400f1f24987408771c7dffe0a51817d96|imbalance|K100|a54",
+        "wallets_renamed": 2385,
+        "slots": 300
+      },
+      {
+        "window_id": "L1_additive_trades_s2_no|0x4803f9426471fb1b63ea694c1eb1ef691f1971d0fd6f86739dcd8717d5e4ba55|imbalance|K100|a69",
+        "wallets_renamed": 2521,
+        "slots": 400
+      }
+    ],
+    "tie_window": "L1_additive_trades_s2_no|0x4803f9426471fb1b63ea694c1eb1ef691f1971d0fd6f86739dcd8717d5e4ba55|imbalance|K100|a69",
+    "passed": true
+  },
+  "assertion_b": {
+    "modules_scanned": [
+      "ids.py",
+      "sources.py",
+      "freeze.py",
+      "decompose.py",
+      "aggregate.py",
+      "orbit.py",
+      "permute.py",
+      "pvalues.py",
+      "multiplicity.py"
+    ],
+    "files_opened": 437,
+    "truth_files_opened": 0,
+    "passed": true
+  },
+  "truth_isolation": {
+    "files_named_after_the_truth": [],
+    "manifest_copies": [],
+    "truth_labelled_columns": {},
+    "passed": true
+  },
+  "feedback_ban": "no simulated result may revise the eligibility rule, a profile, a seed, a statistic or any real-track rule",
+  "outputs": {
+    "q2_sim_evaluation.csv": "3b627751397452be61d64181104444d88770abce48f32c59033faa02b6be3f33",
+    "q2_calibration.json": "4a571f09691a49d0980413eab10536efce1b2f70439be940e08dd9f3bdac6111"
+  }
+}

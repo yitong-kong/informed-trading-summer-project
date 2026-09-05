@@ -1,0 +1,321 @@
+{
+  "config_version": "q3-config-2.1.0",
+  "frozen_on": "2026-08-23",
+  "study": "Q3 -- cross-contract transfer of an online alarm window",
+  "standing": "exploratory. Its family-wise error claim covers its own family only, it is reported as a third question beside Q1 and Q2, and no Q3 result may be used to change a Q1 threshold, channel or bucket size, or a Q2 rule, population, seed or statistic",
+  "source": {
+    "channel": "imbalance",
+    "require_alarmed": true,
+    "methods": [
+      "cusum",
+      "windowed_glr"
+    ],
+    "bucket_sizes": "all, including K=50",
+    "interval": "[window_start_utc, alarm_end_utc] of the source alarm",
+    "hhi_excluded_reason": "HHI is a function of the wallet labels, so it is not invariant to the permutation; selecting a window with it would make the selection event and the permutation act on the same labels and the null distribution would no longer hold"
+  },
+  "targets": {
+    "population": "every contract of the event cluster, including the one Q1 excluded from detection for lack of a clean burn-in: the primary statistic needs no baseline",
+    "bucket_size": "each contract keeps the bucket size Q1 froze for it"
+  },
+  "mapping": {
+    "rule": "a target bucket qualifies iff [start_ts, end_ts] intersects the source interval [window_start_utc, alarm_end_utc]; the window is the contiguous span from the first to the last qualifying bucket",
+    "span_not_set": "the contiguous span is taken rather than the set of qualifying buckets, so that the cell structure is the same object Q2 permutes",
+    "rebucketing": "forbidden; the frozen per-contract bucketing is reused unchanged, because re-cutting by UTC endpoints picks up a different set of trades whenever a bucket boundary falls inside a shared second"
+  },
+  "dedup": {
+    "rule": "drop a mapped window whose (target contract, bucket span) equals a Q2 primary window's; Q2 has already tested it",
+    "q2_primary": "the imbalance alarms of the frozen Q1 table at K=100: the wide span [onset_bucket, alarm_bucket] and the test span [onset_bucket_mle, alarm_bucket] both count as a match"
+  },
+  "statistic": {
+    "primary": "e = d * sum(signed_yes_size), d the source alarm's direction",
+    "primary_conservation": "sum_w e_w = d * sum_i q_i, exactly",
+    "mirror": "-e is reported beside e: a window extreme in both tails shows concentration without direction and is descriptive only",
+    "secondary": "DNC / AGC / DFA over the window, with W defined as the plain sum of single-step LLRs and no reflection, so that sum DFA = W_window still holds exactly",
+    "secondary_status": "a sensitivity with a family of its own, because it covers a different set of pairs; it may disagree with the primary and the disagreement is reported, but it can never promote a pair",
+    "secondary_availability": "only where the target contract has a clean burn-in: it is not excluded from Q1 detection, no window bucket is imputed or scale-degenerate, and the window starts at or after the baseline warm-up of the source alarm's method",
+    "secondary_baseline": "the target contract's own mu_b / sigma_b under the source alarm's method; delta* is the source alarm's winning delta and d its direction",
+    "direction": "taken from the source alarm, never from the target contract's resolved outcome",
+    "headline_legs": {
+      "magnitude": "score_vdw: van der Waerden score of d*q, ranked with average ties inside each target bucket",
+      "direction": "score_sign: sign(d*q), with zero size scoring zero"
+    }
+  },
+  "direction_assumption": "transferring d assumes the cluster's contracts share an informed direction over the interval. That is a domain assumption about these questions, not a statistical result, and the mirror statistic is reported so a reader can see both tails",
+  "permutation": {
+    "cell_definition": [
+      "bucket_index",
+      "profile"
+    ],
+    "stratify_by_side": false,
+    "B": 1999999,
+    "p_denominator": 2000000,
+    "tie_rule": ">=",
+    "batch_size": 512,
+    "seed_base": 2026081901,
+    "seed_base_note": "new constant; Q2 uses 2026081601 and its second-seed review 2026081602, so no Q3 stream can be reproduced from a Q2 id or the other way round",
+    "numpy_version": "2.4.6"
+  },
+  "profile": {
+    "labels": [
+      "NEW",
+      "OLD_SMALL",
+      "OLD_LARGE"
+    ],
+    "rule": "Q2's rule with the window's first bucket as the onset: NEW has no fill on this contract before the window starts, OLD_SMALL and OLD_LARGE split the rest at the median of the window roster's pre-window median trade sizes"
+  },
+  "eligibility": {
+    "confirmatory_rule": "n_trades >= 3"
+  },
+  "multiplicity": {
+    "alpha": 0.05,
+    "alpha_leg": 0.025,
+    "bh_q": 0.1,
+    "family_unit": "window",
+    "family": "each declared family is adjudicated separately inside each q3_window_id; no family is pooled across windows",
+    "parallel_evidence": "magnitude and direction each run at alpha/2 over the same eligible transferred pairs as primary; primary e remains the only headline family",
+    "isolation": "never merged with the Q2 family; the two family-wise error claims are separate",
+    "leakage_sensitivity": "the whole Holm family is run a second time with every wallet that also traded inside the source window removed, and both results are reported; a pair significant only in the first is a lead, not a finding"
+  },
+  "placebo": {
+    "purpose": "a transferred window is only interesting if the same test would not have fired on a window nobody selected",
+    "rule": "for each transferred window [s, e] of length L on contract C, the placebo is the nearest same-length span on C that lies inside C's bucket range and intersects no transferred window and no Q2 primary span on C. Candidates are walked outward from the window one bucket at a time on both sides and the first that qualifies is taken, the earlier side winning an exact tie; if the contract has no room at all the window has no placebo and that is recorded. Two placebos may overlap each other, because two transferred windows on one contract already can",
+    "selection": "arithmetic on the transferred window's own length, and no alarm: nothing crossed a threshold inside a placebo span",
+    "direction": "the same d as the window it controls",
+    "family": "each placebo window is its own Holm family at the same alpha, adjudicated separately and never merged with the study or another placebo window",
+    "reading": "a contrast, not a false-alarm rate. These are real contracts with no ground truth, so a rejection inside a placebo window is not provably a false positive -- the cluster may hold informed trading outside the alarm windows, which is the premise of the project. What the contrast can say is whether the transferred windows are distinguishable from unselected ones at all; if they are not, the selection is doing no work"
+  },
+  "not_established": {
+    "exchangeability": "the permutation null treats the wallets inside a cell as exchangeable. The cell stratifies on the bucket and on a wallet's pre-window trade sizes, so a wallet with no pre-window history is pooled with every other such wallet however large it trades inside the window. Where trade size is persistent at the wallet level the assumption is approximate and the family-wise error rate is approximate with it",
+    "calibration": "this version ships no measurement of how approximate. That is the main reason the study is exploratory rather than confirmatory, and it is why the placebo contrast is reported beside every result",
+    "scope": "the real event cluster only; no simulated stream is read, and no module of this study can open a scenario manifest"
+  },
+  "order": [
+    "freeze the configuration",
+    "run the real cluster once",
+    "read the results"
+  ],
+  "id_scheme": {
+    "separator": "|",
+    "python_hash_forbidden": true,
+    "templates": {
+      "q3_window_id": "q3|<role>|<source_detector_run_id>|><target_stream_id>|<target_condition_id>|K<K>|b<bucket_start>-<bucket_end>",
+      "q3_cell_id": "<q3_window_id>|b<bucket_index>|<profile>",
+      "cell_seed": "int.from_bytes(sha256('<seed_base>|<q3_window_id>|<q3_cell_id>')[:8], 'big')",
+      "membership_sha256": "sha256 over '<bucket_index>|<transaction_hash>\\n' for the slots of a window in frozen order"
+    },
+    "vectors": {
+      "source_detector_run_id": "real|0x0000000000000000000000000000000000000000000000000000000000000001|imbalance|K50|windowed_glr",
+      "q3_window_id": "q3|transfer|real|0x0000000000000000000000000000000000000000000000000000000000000001|imbalance|K50|windowed_glr|>real|0x0000000000000000000000000000000000000000000000000000000000000002|K100|b44-53",
+      "q3_cell_id": "q3|transfer|real|0x0000000000000000000000000000000000000000000000000000000000000001|imbalance|K50|windowed_glr|>real|0x0000000000000000000000000000000000000000000000000000000000000002|K100|b44-53|b47|OLD_LARGE",
+      "cell_seed": 3760812515704755515,
+      "vector_inputs": {
+        "source_stream_id": "real",
+        "source_condition_id": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "source_channel": "imbalance",
+        "source_bucket_size": 50,
+        "source_method": "windowed_glr",
+        "role": "transfer",
+        "target_stream_id": "real",
+        "target_condition_id": "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "target_bucket_size": 100.0,
+        "bucket_start": 44,
+        "bucket_end": 53.0,
+        "bucket_index": 47,
+        "profile": "OLD_LARGE",
+        "seed_base": 2026081901
+      }
+    }
+  },
+  "expected_counts": {
+    "source_alarms": 4,
+    "intersecting_pairs": 12,
+    "dropped_as_q2_primary": 3,
+    "windows": 9,
+    "n_trades": 9900,
+    "n_pairs_ge3": 785,
+    "by_window": [
+      {
+        "source_question": "Maduro out by November 30, 2025?",
+        "source_method": "cusum",
+        "target_question": "Maduro out in 2025?",
+        "bucket_start": 176,
+        "bucket_end": 196,
+        "n_trades": 2100,
+        "n_wallets": 1254,
+        "n_pairs_ge3": 151
+      },
+      {
+        "source_question": "Maduro out by November 30, 2025?",
+        "source_method": "cusum",
+        "target_question": "Maduro out by March 31, 2026?",
+        "bucket_start": 15,
+        "bucket_end": 20,
+        "n_trades": 600,
+        "n_wallets": 390,
+        "n_pairs_ge3": 30
+      },
+      {
+        "source_question": "Maduro out by March 31, 2026?",
+        "source_method": "windowed_glr",
+        "target_question": "Maduro out by December 31, 2026?",
+        "bucket_start": 53,
+        "bucket_end": 61,
+        "n_trades": 450,
+        "n_wallets": 247,
+        "n_pairs_ge3": 43
+      },
+      {
+        "source_question": "Maduro out by March 31, 2026?",
+        "source_method": "windowed_glr",
+        "target_question": "Maduro out by January 31, 2026?",
+        "bucket_start": 46,
+        "bucket_end": 85,
+        "n_trades": 4000,
+        "n_wallets": 1396,
+        "n_pairs_ge3": 347
+      },
+      {
+        "source_question": "Maduro out by March 31, 2026?",
+        "source_method": "windowed_glr",
+        "target_question": "Maduro out by February 28, 2026?",
+        "bucket_start": 7,
+        "bucket_end": 13,
+        "n_trades": 700,
+        "n_wallets": 329,
+        "n_pairs_ge3": 42
+      },
+      {
+        "source_question": "Maduro out by December 31, 2026?",
+        "source_method": "windowed_glr",
+        "target_question": "Maduro out by March 31, 2026?",
+        "bucket_start": 76,
+        "bucket_end": 79,
+        "n_trades": 400,
+        "n_wallets": 174,
+        "n_pairs_ge3": 24
+      },
+      {
+        "source_question": "Maduro out by December 31, 2026?",
+        "source_method": "windowed_glr",
+        "target_question": "Maduro out by January 31, 2026?",
+        "bucket_start": 44,
+        "bucket_end": 53,
+        "n_trades": 1000,
+        "n_wallets": 408,
+        "n_pairs_ge3": 88
+      },
+      {
+        "source_question": "Maduro out by December 31, 2026?",
+        "source_method": "windowed_glr",
+        "target_question": "Maduro out by February 28, 2026?",
+        "bucket_start": 6,
+        "bucket_end": 8,
+        "n_trades": 300,
+        "n_wallets": 181,
+        "n_pairs_ge3": 21
+      },
+      {
+        "source_question": "Maduro out by December 31, 2026?",
+        "source_method": "windowed_glr",
+        "target_question": "Maduro out by December 31, 2026?",
+        "bucket_start": 48,
+        "bucket_end": 54,
+        "n_trades": 350,
+        "n_wallets": 177,
+        "n_pairs_ge3": 39
+      }
+    ],
+    "placebo_windows": 8,
+    "placebo_windows_impossible": 1,
+    "placebo_n_trades": 9200,
+    "placebo_n_pairs_ge3": 507,
+    "by_placebo": [
+      {
+        "source_question": "Maduro out by December 31, 2026?",
+        "source_method": "windowed_glr",
+        "target_question": "Maduro out by December 31, 2026?",
+        "bucket_start": 41,
+        "bucket_end": 47,
+        "n_trades": 350,
+        "n_wallets": 179,
+        "n_pairs_ge3": 29
+      },
+      {
+        "source_question": "Maduro out by December 31, 2026?",
+        "source_method": "windowed_glr",
+        "target_question": "Maduro out by February 28, 2026?",
+        "bucket_start": 3,
+        "bucket_end": 5,
+        "n_trades": 300,
+        "n_wallets": 212,
+        "n_pairs_ge3": 12
+      },
+      {
+        "source_question": "Maduro out by December 31, 2026?",
+        "source_method": "windowed_glr",
+        "target_question": "Maduro out by January 31, 2026?",
+        "bucket_start": 34,
+        "bucket_end": 43,
+        "n_trades": 1000,
+        "n_wallets": 535,
+        "n_pairs_ge3": 49
+      },
+      {
+        "source_question": "Maduro out by December 31, 2026?",
+        "source_method": "windowed_glr",
+        "target_question": "Maduro out by March 31, 2026?",
+        "bucket_start": 72,
+        "bucket_end": 75,
+        "n_trades": 400,
+        "n_wallets": 148,
+        "n_pairs_ge3": 11
+      },
+      {
+        "source_question": "Maduro out by March 31, 2026?",
+        "source_method": "windowed_glr",
+        "target_question": "Maduro out by December 31, 2026?",
+        "bucket_start": 39,
+        "bucket_end": 47,
+        "n_trades": 450,
+        "n_wallets": 225,
+        "n_pairs_ge3": 29
+      },
+      {
+        "source_question": "Maduro out by March 31, 2026?",
+        "source_method": "windowed_glr",
+        "target_question": "Maduro out by January 31, 2026?",
+        "bucket_start": 4,
+        "bucket_end": 43,
+        "n_trades": 4000,
+        "n_wallets": 1977,
+        "n_pairs_ge3": 225
+      },
+      {
+        "source_question": "Maduro out by November 30, 2025?",
+        "source_method": "cusum",
+        "target_question": "Maduro out by March 31, 2026?",
+        "bucket_start": 9,
+        "bucket_end": 14,
+        "n_trades": 600,
+        "n_wallets": 364,
+        "n_pairs_ge3": 35
+      },
+      {
+        "source_question": "Maduro out by November 30, 2025?",
+        "source_method": "cusum",
+        "target_question": "Maduro out in 2025?",
+        "bucket_start": 155,
+        "bucket_end": 175,
+        "n_trades": 2100,
+        "n_wallets": 980,
+        "n_pairs_ge3": 117
+      }
+    ]
+  },
+  "scope": {
+    "supported_claim": "inside the interval another contract of the cluster alarmed on, this wallet's directional exposure on this contract is unusual against a label permutation, and is worth review",
+    "unsupported_claim": "informed, insider, illegal, or a probability of any of those; and not that Q3 repairs Q1 -- Q3 conditions on a different event and carries its own false-alarm argument",
+    "attribution": "active order owner only; the passive leg of every fill is structurally invisible to this design"
+  }
+}
